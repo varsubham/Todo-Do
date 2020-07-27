@@ -24,3 +24,5 @@ function validateLoginInput(data){
         isValid: isEmpty(error),
     }
 }
+
+export default validateLoginInput;

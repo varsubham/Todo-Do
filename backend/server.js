@@ -4,12 +4,12 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(express.json());
 
-const url = process.env.ATLAS_URL; 
+const url = require("./config/keys").mongoURI; 
 
 //connect to mongodb
 
