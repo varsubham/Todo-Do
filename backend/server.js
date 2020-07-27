@@ -15,8 +15,8 @@ const url = process.env.ATLAS_URL;
 
 mongoose.connect(url, {useNewUrlParser: true, useUnifiedTopology: true});
 const connection = mongoose.connection;
-//looging when connection established
 
+//looging when connection established
 connection.once('open', () => {
     console.log("MongoDB databse connection established!")
 });
