@@ -113,7 +113,14 @@ code {
   margin: auto;
   height: 90%;
 }
-
+@media only screen and (max-width: 378px){
+  .contact .details .red-bg{
+    max-width: 400px;
+  }
+  .contact .details .red-bg .form{
+    padding: 3em 1em;
+  }
+}
 
 .contact .details .red-bg .form{
   padding: 3em 6.25em;
