@@ -5,9 +5,90 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed;
 }
-
+html{
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.container{
+  max-width: 1300px;
+}
+.container-flex{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 40px;
+}
+.landing-description{
+  text-align: center;
+  
+}
+
+.landing-description h1{
+  margin-bottom: 20px;
+  font-size: 70px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+/* Button main */
+
+.button-main {
+  display: inline-block;
+  border-radius: 7px;
+  background-image: linear-gradient(#7EE3E3, #217A7A);
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  padding: 10px 20px;
+  margin: 5px;
+}
+
+.button-main span {
+  cursor: pointer;
+  letter-spacing: 1px;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-main span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-main:hover span {
+  padding-right: 25px;
+}
+
+.button-main:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+@media only screen and (max-width: 990px) {
+  .container-flex {
+    display: block;
+    text-align: center;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .container-flex img{
+    width: auto;
+  }
 }
