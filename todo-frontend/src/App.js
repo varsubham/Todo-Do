@@ -4,7 +4,6 @@ import NavBar from './components/NavBar';
 import Landing from './components/Landing';
 import Login from './components/Login';
 import Register from './components/Register';
-
 function App() {
   return (
     <div>

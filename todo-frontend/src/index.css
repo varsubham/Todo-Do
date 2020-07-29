@@ -92,3 +92,67 @@ code {
     width: auto;
   }
 }
+
+/* Register Form */
+
+.contact{
+  text-align: center;
+  
+  margin: 24px;
+}
+.contact .details{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact .details .red-bg{
+  background-image: linear-gradient(#7EE3E3, #217A7A);
+  /* background-image: linear-gradient(120deg, #6aa3ff 0%, #c2e9fb 100%); */
+  width: 450px;
+  border-radius: 7px;
+  margin: auto;
+  height: 90%;
+}
+
+
+.contact .details .red-bg .form{
+  padding: 3em 6.25em;
+}
+.contact .details .red-bg .form .inputbox{
+  padding-bottom: 2em;
+  
+}
+.contact .details .red-bg .form input{
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+  padding: 10px 0;
+  color: white;
+  
+
+}
+.contact .details .red-bg .form textarea{
+  width: 100%;
+  outline: none;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  border-bottom: 2px solid white;
+  font-size: 20px;
+  min-height: 150px;
+  color: white;
+}
+::placeholder{
+  color: white;
+  opacity: 1;
+}
+.contact .details .red-bg .form button{
+  padding: 0.3em 1.5em;
+  font-size: 1.2em;
+  font-weight: 300;
+  cursor: pointer;
+}

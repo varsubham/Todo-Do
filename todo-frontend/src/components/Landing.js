@@ -15,7 +15,6 @@ function Landing(){
                 </div>
                 
             </div>
-            
         </div>
     )
 }
