@@ -10,7 +10,7 @@ function Landing(){
                 <div className = "landing-description">
                     <h1>Let 2-do handle you Tasks</h1>
                     <Link to = '/register'>
-                        <button class="button-main" ><span>Register</span></button>
+                        <button className="button-main" ><span>Register</span></button>
                     </Link>
                 </div>
                 
