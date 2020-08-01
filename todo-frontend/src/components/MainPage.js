@@ -11,9 +11,13 @@ class MainPage extends React.Component{
         }
         this.state = {
             loggedin,
-            
+            uservalue: "",
         }
         
+    }
+    componentDidMount(){
+        // console.log(this.props.location.state);
+        // this.setState({uservalue: this.props.location.uservalue});
     }
     render(){
         //console.log(this.props.location.state.username1);

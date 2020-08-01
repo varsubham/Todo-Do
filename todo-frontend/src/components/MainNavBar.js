@@ -13,6 +13,7 @@ class NavBar extends React.Component{
     }
     
     render(){
+        //console.log(this.props.user);
     return (
         <div>
             <nav className="navbar  navbar-expand-lg navbar-light bg-light">

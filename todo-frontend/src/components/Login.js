@@ -5,6 +5,8 @@ import NavBar from './NavBar';
 class Login extends React.Component{
     constructor(props){
         let LoggedInStatus = false;
+        if(localStorage.getItem('token') !== null)
+            LoggedInStatus = true;
         super(props);
         this.state = {
             username: "",
@@ -33,7 +35,6 @@ class Login extends React.Component{
                 localStorage.setItem('token', "anyrandomstring");
                 this.setState({LoggedInStatus: true});
                 //console.log(this.state.username);
-                
             }
         })
         .catch(err => console.log(err.response))

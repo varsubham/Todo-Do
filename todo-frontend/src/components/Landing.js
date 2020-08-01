@@ -1,9 +1,26 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import NavBar from './NavBar';
+
 const logo = require('../images/logo4.svg');
 
-function Landing(){
+class Landing extends React.Component{
+    
+    constructor(){
+        super();
+        let loggedin = true;
+        const tokenstatus = localStorage.getItem('token');
+        if(tokenstatus === null){
+            loggedin = false;
+        }
+        this.state = {
+            loggedin
+        }
+    }
+    
+    render(){
+        if(this.state.loggedin)
+            return <Redirect to = '/main'/>
     return (
         <div>
             <NavBar/>
@@ -21,5 +38,5 @@ function Landing(){
         </div>
     )
 }
-
+}
 export default Landing;

@@ -1,15 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from './NavBar';
 class Register extends React.Component{
     constructor(){
+        let loggedin = false;
+        if(localStorage.getItem('token') !== null)
+            loggedin = true;
         super();
         this.state = {
             name: "",
             username: "",
             password: "",
             password2: "",
+            loggedin,
         }
         this.onChangeListner = this.onChangeListner.bind(this);
         this.onSumbit = this.onSumbit.bind(this);
@@ -30,6 +34,8 @@ class Register extends React.Component{
         .then(res => console.log(res.data))
     }
     render(){
+        if(this.state.loggedin)
+            return <Redirect to = '/main' />
         return (
             <div>
                 <NavBar/>
