@@ -35,6 +35,7 @@ class Login extends React.Component{
                 localStorage.setItem('token', "anyrandomstring");
                 this.setState({LoggedInStatus: true});
                 //console.log(this.state.username);
+                this.props.function1(this.state.username);
             }
         })
         .catch(err => console.log(err.response.data))
