@@ -3,9 +3,9 @@ import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from './NavBar';
 class Login extends React.Component{
-    constructor(){
+    constructor(props){
         let LoggedInStatus = false;
-        super();
+        super(props);
         this.state = {
             username: "",
             password: "",
@@ -32,14 +32,17 @@ class Login extends React.Component{
             if(res.data.success){
                 localStorage.setItem('token', "anyrandomstring");
                 this.setState({LoggedInStatus: true});
-
+                //console.log(this.state.username);
+                
             }
         })
-        .catch(err => console.log(err.response.data))
+        .catch(err => console.log(err.response))
     }
     render(){
-        if(this.state.LoggedInStatus)
+        if(this.state.LoggedInStatus){
+            //this.setState({currentUser: this.state.username});
             return <Redirect to = '/main'/>
+        }
     return (
             <div>
                 <NavBar/>
