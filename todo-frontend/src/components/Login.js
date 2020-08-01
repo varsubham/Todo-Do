@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
-
+import NavBar from './NavBar';
 class Login extends React.Component{
     constructor(){
         let LoggedInStatus = false;
@@ -42,6 +42,7 @@ class Login extends React.Component{
             return <Redirect to = '/main'/>
     return (
             <div>
+                <NavBar/>
                 <form className = "contact" onSubmit = {this.onSubmit}>
                     <div className="details" style = {{marginTop: "80px"}}>
                         <div className="red-bg">

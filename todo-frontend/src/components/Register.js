@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import NavBar from './NavBar';
 class Register extends React.Component{
     constructor(){
         super();
@@ -31,6 +32,7 @@ class Register extends React.Component{
     render(){
         return (
             <div>
+                <NavBar/>
                 <form className = "contact" onSubmit = {this.onSumbit}>
                     <div className="details">
                         <div className="red-bg">

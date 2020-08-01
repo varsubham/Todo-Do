@@ -1,10 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavBar from './NavBar';
 const logo = require('../images/logo4.svg');
 
 function Landing(){
     return (
+        <div>
+            <NavBar/>
+        
         <div className = "container">
+             
             <div className = "container-flex">
                 <img width = "400" src = {logo} alt = ""/>
                 <div className = "landing-description">
@@ -15,6 +20,7 @@ function Landing(){
                 </div>
                 
             </div>
+        </div>
         </div>
     )
 }
