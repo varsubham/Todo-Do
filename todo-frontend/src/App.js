@@ -9,7 +9,6 @@ function App() {
   return (
     <div>
        <Router>
-         
          <Route path = "/" exact component = {Landing} />
          <Route path = "/login" exact component = {Login} />
          <Route path = "/register" exact component = {Register} />
