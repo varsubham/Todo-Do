@@ -7,20 +7,17 @@ function Landing(){
     return (
         <div>
             <NavBar/>
-        
-        <div className = "container">
-             
-            <div className = "container-flex">
-                <img width = "400" src = {logo} alt = ""/>
-                <div className = "landing-description">
-                    <h1>Let 2-do handle you Tasks</h1>
-                    <Link to = '/register'>
-                        <button className="button-main" ><span>Register</span></button>
-                    </Link>
+                <div className = "container">
+                    <div className = "container-flex">
+                        <img width = "400" src = {logo} alt = ""/>
+                        <div className = "landing-description">
+                            <h1>Let 2-do handle you Tasks</h1>
+                            <Link to = '/register'>
+                                <button className="button-main" ><span>Register</span></button>
+                            </Link>
+                        </div>
+                    </div>
                 </div>
-                
-            </div>
-        </div>
         </div>
     )
 }
