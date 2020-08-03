@@ -9,23 +9,29 @@ class App extends React.Component {
   
   constructor(){
     super();
+    //this.loggedUser = 'xyz';
     this.state = {
       loggedinuser: "",
     }
     this.somefunction = this.somefunction.bind(this);
+    console.log('fron constructor');
   }
   somefunction(value){
     this.setState({loggedinuser: value});
+    //this.loggedUser = this.state.loggedinuser;
+    console.log('somefunc');
   }
+  
   render(){
-    console.log(this.state.loggedinuser);
+    console.log('from render');
   return (
     <div>
        <Router>
+         <h1>{this.state.loggedinuser}</h1>
          <Route path = "/" exact component = {Landing} />
          <Route path = "/login" exact component = {() => <Login function1 = {this.somefunction} />} />
          <Route path = "/register" exact component = {Register} />
-         <Route path = "/main" exact component = {MainPage} />
+         <Route path = "/main" exact component = {() => <MainPage loggedinuser = {this.state.loggedinuser} />} />
        </Router>
     </div>
   );
