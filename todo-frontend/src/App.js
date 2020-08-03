@@ -5,6 +5,8 @@ import Landing from './components/Landing';
 import Login from './components/Login';
 import Register from './components/Register';
 import MainPage from './components/MainPage';
+import {Provider} from 'react-redux';
+import store from './store';
 class App extends React.Component {
   
   constructor(){
@@ -26,6 +28,7 @@ class App extends React.Component {
     console.log('from render');
   return (
     <div>
+      <Provider store = {store}>
        <Router>
          <h1>{this.state.loggedinuser}</h1>
          <Route path = "/" exact component = {Landing} />
@@ -33,6 +36,7 @@ class App extends React.Component {
          <Route path = "/register" exact component = {Register} />
          <Route path = "/main" exact component = {() => <MainPage loggedinuser = {this.state.loggedinuser} />} />
        </Router>
+      </Provider>
     </div>
   );
 }
