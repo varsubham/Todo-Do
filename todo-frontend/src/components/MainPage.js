@@ -4,10 +4,12 @@ import { connect } from 'react-redux';
 import {logoutUser} from '../actions/authActions'
 import { Redirect } from 'react-router-dom';
 import MainNavBar from './MainNavBar';
+import axios from 'axios';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
+            current_user: {},
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
     }
@@ -19,6 +21,15 @@ class MainPage extends React.Component{
     componentDidMount(){
         // console.log(this.props.location.state);
         // this.setState({uservalue: this.props.location.uservalue});
+        axios.get('http://localhost:5000/api/users/')
+        .then(res => {
+            const current_user = res.data.filter(val => {
+                if(val._id === this.props.auth.user.id)
+                    return val;
+            })
+            this.setState({current_user});
+            //console.log(this.state.current_user[0].email);
+        });
     }
     render(){
         //console.log(this.props.location.state.username1);
