@@ -9,7 +9,8 @@ class MainPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            current_user: {},
+            current_user: {},            // detail of current logged in user
+            username: "",               // current logged in username(email)
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
     }
@@ -28,6 +29,9 @@ class MainPage extends React.Component{
                     return val;
             })
             this.setState({current_user});
+            this.setState({username: current_user[0].email})
+            // console.log(this.state.username);
+            //console.log(this.state.current_user[0].email);
             //console.log(this.state.current_user[0].email);
         });
     }
@@ -35,9 +39,11 @@ class MainPage extends React.Component{
         //console.log(this.props.location.state.username1);
         //console.log(this.props.location.state);
            const {user}  = this.props.auth;
+           //console.log(this.state);
+           
     return (
         <div>
-            <MainNavBar function1 = {this.onLogoutClick} name = {user.name}/>
+            <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
             <h1>Welcome  to the main Page</h1>
         </div>
     )

@@ -44,7 +44,7 @@ class App extends React.Component {
   }
   
   render(){
-    console.log('from render');
+    //console.log('from render');
   return (
     <div>
       <Provider store = {store}>
