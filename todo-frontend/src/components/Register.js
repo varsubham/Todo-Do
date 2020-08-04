@@ -19,6 +19,11 @@ class Register extends React.Component{
         this.onChangeListner = this.onChangeListner.bind(this);
         this.onSumbit = this.onSumbit.bind(this);
     }
+    componentDidMount(){
+        //If logged in user navigates to register page
+        if(this.props.auth.isAuthenticated)
+            this.props.history.push('/main');
+    }
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
           this.setState({

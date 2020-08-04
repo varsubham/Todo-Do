@@ -6,9 +6,9 @@ class NavBar extends React.Component{
         super();
         this.logout = this.logout.bind(this);
     }
-    logout(){
+    logout(event){
         //this.props.loggedin = false;
-        console.log('logout');
+        this.props.function1(event);
 
     }
     
@@ -39,9 +39,9 @@ class NavBar extends React.Component{
                                 <div style = {{textAlign: "center", padding: "8px"}}>
                                     <i className="fa fa-user-circle-o" style={{fontSize: "56px", color:"#217A7A"}}></i>
                                 </div>
-                                <h5 style = {{textAlign: "center", padding: "8px"}}>username</h5>
+                                <h5 style = {{textAlign: "center", padding: "8px"}}>{this.props.name}</h5>
                                 <div className="dropdown-divider"></div>
-                                <a className="dropdown-item" href="/" onClick = {this.logout} style = {{textAlign: "center", padding: "8px", fontSize: "20px"}}>Logout</a>
+                                <a className="dropdown-item"  onClick = {this.logout} style = {{textAlign: "center", padding: "8px", fontSize: "20px", cursor: "pointer"}}>Logout</a>
                             </div>
                         </div>
                     </div>
