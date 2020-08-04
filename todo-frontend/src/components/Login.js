@@ -2,6 +2,10 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 import NavBar from './NavBar';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginUser } from "../actions/authActions";
+import classnames from "classnames";
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -14,6 +18,19 @@ class Login extends React.Component{
         this.onChangeListner = this.onChangeListner.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
     }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+          this.props.history.push("/main"); // push user to dashboard when they login
+        }
+    if (nextProps.errors) {
+          this.setState({
+            errors: nextProps.errors
+          });
+        }
+      }
+
+
     onChangeListner(event){
         this.setState({[event.target.name]: event.target.value});
         //console.log(this.state);
@@ -25,18 +42,7 @@ class Login extends React.Component{
             password: this.state.password,
             
         }
-        axios.post(`http://localhost:5000/api/users/login`, new_login)
-        .then(res => {
-            console.log(res.data.success)
-            if(res.data.success){
-                // localStorage.setItem('token', "anyrandomstring");
-                // this.setState({LoggedInStatus: true});
-                // //console.log(this.state.username);
-                // this.props.function1(this.state.username);
-                console.log(new_login);
-            }
-        })
-        .catch(err => console.log(err.response))
+        this.props.loginUser(new_login);
     }
     render(){
         const { errors } = this.state;
@@ -49,10 +55,10 @@ class Login extends React.Component{
                             <h1 style = {{color: "black", paddingTop: "30px", fontWeight: "bold", fontSize: "50px"}}>Sign in</h1>
                             <div className="form">
                                 <div className="inputbox">
-                                    <input error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" placeholder="Email Address"/>
+                                    <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" placeholder="Email Address"/>
                                 </div>
                                 <div className="inputbox">
-                                    <input error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" placeholder="Password"/>
+                                    <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" placeholder="Password"/>
                                 </div>
                                 <div className="inputbox1">
                                     <button className="button-main" type = "submit" style = {{backgroundImage: "linear-gradient(#ffffff, #bebebe)", width: "fit-content", padding: "10px 30px"}} ><span style= {{color: "black", fontSize: "xx-large", fontWeight: "bold"}}>Sign in</span></button>
@@ -70,4 +76,16 @@ class Login extends React.Component{
         }
 }
 
-export default Login;
+Login.propTypes = {
+    loginUser: PropTypes.func.isRequired,
+    auth: PropTypes.object.isRequired,
+    errors: PropTypes.object.isRequired
+  };
+  const mapStateToProps = state => ({
+    auth: state.auth,
+    errors: state.errors
+  });
+  export default connect(
+    mapStateToProps,
+    { loginUser }
+  )(Login);
