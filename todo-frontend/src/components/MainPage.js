@@ -44,7 +44,6 @@ class MainPage extends React.Component{
     return (
         <div>
             <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
-            <h1>Welcome  to the main Page</h1>
         </div>
     )
     }
