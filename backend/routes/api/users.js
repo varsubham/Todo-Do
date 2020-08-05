@@ -10,8 +10,36 @@ const validateLoginInput = require("../../validation/login");
 
 //load user model
 const User = require('../../models/user');
-
+const UserDetail = require('../../models/userDetail');
 //Post request 
+
+//UserDetail end point
+
+router.route('/tasks').post((req, res) => {
+    const newUserDetail = new UserDetail({
+        email: req.body.email,
+        tasks: req.body.tasks,
+    });
+    newUserDetail.save()
+    .then(detail => res.json(detail))
+    .catch(err => console.log(err));
+});
+
+//UserDetail Get end point
+
+router.route('/tasks').get((req, res) => {
+    UserDetail.find()
+    .then(detail => res.json(detail))
+    .catch(err => res.status(400).json('Error: ', err));
+})
+
+//Find UserDetail by id
+
+router.route('/tasks/:id').get((req, res) => {
+    UserDetail.findById(req.params.id)
+    .then(detail => res.json(detail))
+    .catch(err => res.status(400).json('Error: ', err));
+})
 
 //Register end point
 router.route('/register').post((req, res) => {
