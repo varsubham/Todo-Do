@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import MainNavBar from './MainNavBar';
 import axios from 'axios';
 import EmptyComp from './main_comp/EmptyComp';
+import TasksComp from './main_comp/TasksComp';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
@@ -45,7 +46,7 @@ class MainPage extends React.Component{
     return (
         <div>
             <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
-            <EmptyComp/>
+            <TasksComp/>
         </div>
     )
     }
