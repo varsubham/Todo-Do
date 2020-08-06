@@ -32,17 +32,9 @@ class MainPage extends React.Component{
             })
             this.setState({current_user});
             this.setState({username: current_user[0].email})
-            // console.log(this.state.username);
-            //console.log(this.state.current_user[0].email);
-            //console.log(this.state.current_user[0].email);
         });
     }
-    render(){
-        //console.log(this.props.location.state.username1);
-        //console.log(this.props.location.state);
-           const {user}  = this.props.auth;
-           //console.log(this.state);
-           
+    render(){           
     return (
         <div>
             <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
