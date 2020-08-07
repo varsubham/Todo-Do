@@ -7,12 +7,15 @@ import MainNavBar from './MainNavBar';
 import axios from 'axios';
 import EmptyComp from './main_comp/EmptyComp';
 import TasksComp from './main_comp/TasksComp';
+//const tasks_get = require('./axios_route/tasks_get');
+//import tasks_get from './axios_route/tasks_get';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             current_user: {},            // detail of current logged in user
             username: "",               // current logged in username(email)
+            tasks: [],
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
     }
@@ -32,13 +35,63 @@ class MainPage extends React.Component{
             })
             this.setState({current_user});
             this.setState({username: current_user[0].email})
+            //console.log(this.state.username);
+            //const k = tasks_get(this.state.username);
+            // tasks_get(this.state.username);
+            // console.log('after');
+
+            //this.setState({tasks: tasks_get(this.state.username)})
+            //console.log(tasks_get(this.state.username))
+            // console.log(k);
+            let tasks_list = [];
+            const tasks_get = (username, callback) => {
+            axios.get('http://localhost:5000/api/users/tasks/')
+            .then(res => {
+                //console.log(res.data[0].tasks)
+                //console.log(res.data);
+                //console.log(username);
+                //console.log(username);
+                tasks_list = res.data.filter(value =>{
+                    //console.log(value.email);
+                    return value.email === username;
+                });
+                //console.log(tasks_list[0].tasks);
+                if(tasks_list.length){
+                    //console.log(tasks_list[0].tasks);
+                    callback();
+                }
+                //console.log(tasks_list);
+        
+            });
+            
+        }
+        tasks_get(this.state.username, () => {
+            this.setState({tasks: tasks_list[0].tasks});
+            //console.log(tasks_list[0].tasks);
+        })
+
+
         });
-    }
-    render(){           
+        //console.log(this.state.username);
+        //tasks_get(this.state.username);
+
+        // tasks_Get axios request
+        //console.log(this.state.username);
+        
+
+        //tasks_get(this.state.username, () => {
+            
+        }
+    render(){     
+        //console.log(this.state.tasks);
+        const ind_task_comp = this.state.tasks.map(value => {
+            return <TasksComp key = {value._id} task = {value} />
+        })
     return (
         <div>
             <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
-            <TasksComp/>
+            {this.state.tasks.length > 0 ? ind_task_comp : <EmptyComp />}
+            
         </div>
     )
     }
