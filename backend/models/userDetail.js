@@ -18,6 +18,12 @@ const userDetailSchema = new Schema({
             subtasks:{
                 type: Array,
                 default: [],
+                text: {
+                    type: String,
+                },
+                isCompleted: {
+                    type: Boolean,
+                }
             }
         }
     ]
