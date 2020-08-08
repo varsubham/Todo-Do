@@ -82,10 +82,18 @@ class MainPage extends React.Component{
         //tasks_get(this.state.username, () => {
             
         }
+        checkboxClicked(subtask_text, task_id){
+            let copy_state = [];
+            for(let i = 0; i < this.state.tasks.length ; i++){
+                if(this.state.tasks[i]._id === task_id){
+                    
+                }
+            }
+        }
     render(){     
         //console.log(this.state.tasks);
         const ind_task_comp = this.state.tasks.map(value => {
-            return <TasksComp key = {value._id} task = {value} />
+            return <TasksComp key = {value._id} task = {value} checkboxClicked = {this.checkboxClicked} />
         })
     return (
         <div>
