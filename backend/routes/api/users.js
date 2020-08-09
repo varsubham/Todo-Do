@@ -49,7 +49,7 @@ router.route('/tasks/:id').post((req, res) => {
 
         userdetail.save()
         .then(() => res.json('UserDetail Updated'))
-        .catch(err => res.status(400).json('Error: ', err));
+        .catch(err => console.log(err));
     })
     .catch(err => res.status(400).json('Error: ', err));
 })
