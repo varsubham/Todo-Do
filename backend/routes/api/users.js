@@ -40,6 +40,19 @@ router.route('/tasks/:id').get((req, res) => {
     .then(detail => res.json(detail))
     .catch(err => res.status(400).json('Error: ', err));
 })
+//Update UserDetails by id
+router.route('/tasks/:id').post((req, res) => {
+    UserDetail.findById(req.params.id)
+    .then(userdetail => {
+        userdetail.email = req.body.email;
+        userdetail.tasks = req.body.tasks;
+
+        userdetail.save()
+        .then(() => res.json('UserDetail Updated'))
+        .catch(err => res.status(400).json('Error: ', err));
+    })
+    .catch(err => res.status(400).json('Error: ', err));
+})
 
 //Register end point
 router.route('/register').post((req, res) => {

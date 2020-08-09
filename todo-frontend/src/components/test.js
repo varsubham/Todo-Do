@@ -61,7 +61,8 @@
 
 // console.log(k1);
 
-
+//import _ from 'lodash';
+const loda = require('lodash');
 let tasks = [
     {
     _id: "12345678",
@@ -100,19 +101,31 @@ let tasks = [
 ]
 
 
-let a1 = tasks.map(val => {
-    if(val._id === "12345678"){
-        let f1 = val.subtasks.map(value => {
-            if(value.text === "text2"){
-                return value.text === "text2" ? () => {value.isCompleted = !value.isCompleted; return value;} : value;
-            }
-        })
-        return f1;
-    }
-    return val;
-})
+// let a1 = tasks.map(val => {
+//     if(val._id === "12345678"){
+//         let f1 = val.subtasks.map(value => {
+            
+//                 return value.text === "text2" ? (() => {value.isCompleted = !value.isCompleted; return value})() : value;
+            
+//         })
+//         return f1;
+//     }
+//     return val;
+// })
 
-console.log(tasks);
+let copy_task = loda.cloneDeep(tasks);
+
+for(let i of copy_task){
+    if(i._id === '12345678'){
+        for(let j of i.subtasks){
+            if(j.text === 'text2')
+                j.isCompleted = !j.isCompleted;
+        }
+    }
+}
+
+console.log(copy_task[0].subtasks);
+//console.log(tasks);
 // let up_k = k.filter(val => {
 //    if(val == 5)
 //    return 78;

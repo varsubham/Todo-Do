@@ -7,6 +7,7 @@ import MainNavBar from './MainNavBar';
 import axios from 'axios';
 import EmptyComp from './main_comp/EmptyComp';
 import TasksComp from './main_comp/TasksComp';
+import _ from 'lodash';
 //const tasks_get = require('./axios_route/tasks_get');
 //import tasks_get from './axios_route/tasks_get';
 class MainPage extends React.Component{
@@ -16,8 +17,11 @@ class MainPage extends React.Component{
             current_user: {},            // detail of current logged in user
             username: "",               // current logged in username(email)
             tasks: [],
+            userdetail_id : "",
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
+        this.checkboxClicked = this.checkboxClicked.bind(this);
+        this.update_db = this.update_db.bind(this);
     }
     onLogoutClick(e){
         e.preventDefault();
@@ -51,6 +55,7 @@ class MainPage extends React.Component{
                 //console.log(res.data);
                 //console.log(username);
                 //console.log(username);
+                //console.log(res.data);
                 tasks_list = res.data.filter(value =>{
                     //console.log(value.email);
                     return value.email === username;
@@ -67,6 +72,8 @@ class MainPage extends React.Component{
         }
         tasks_get(this.state.username, () => {
             this.setState({tasks: tasks_list[0].tasks});
+            //console.log(tasks_list[0]._id);
+            this.setState({userdetail_id: tasks_list[0]._id})
             //console.log(tasks_list[0].tasks);
         })
 
@@ -83,15 +90,62 @@ class MainPage extends React.Component{
             
         }
         checkboxClicked(subtask_text, task_id){
-            let copy_state = [];
-            for(let i = 0; i < this.state.tasks.length ; i++){
-                if(this.state.tasks[i]._id === task_id){
-                    
+            let copy_state = _.cloneDeep(this.state.tasks);
+            // let copy_state = this.state.tasks.map(val => {
+            //     if(val._id === task_id){
+            //         let temp = val.subtasks.map(value => {
+            //             return value.text === subtask_text ? (() => {
+            //                 value.isCompleted = !value.isCompleted;
+            //                 return value
+            //             })() : value ;
+            //         })
+            //         return temp;
+            //     }
+            //     return val;
+            // })
+            for(let i of copy_state){
+                if(i._id === task_id){
+                    for(let j of i.subtasks){
+                        if(j.text === subtask_text)
+                            j.isCompleted = !j.isCompleted;
+                    }
                 }
             }
+
+
+            this.setState({tasks: copy_state}, this.update_db);
+            // const updated_task_details = {
+            //     email: this.state.username,
+            //     tasks: this.state.tasks,
+            // }
+            // axios.post(`http://localhost:5000/api/users/tasks/${this.state.userdetail_id}`, updated_task_details)
+            // .then(res => {
+            //     console.log(res);
+            //     console.log(res.data);
+            //   });
+            //console.log(subtask_text,"     ", task_id);
+            // console.log(this.state.tasks);
+            // console.log(copy_state);
+            console.log(this.state.username);
+            
         }
-    render(){     
+        update_db(){
+            const updated_task_details = {
+                email: this.state.username,
+                tasks: this.state.tasks,
+            }
+            axios.post(`http://localhost:5000/api/users/tasks/${this.state.userdetail_id}`, updated_task_details)
+            .then(res => {
+                console.log(res);
+                console.log(res.data);
+              });
+            
+        }
+    render(){
+        
+        
         //console.log(this.state.tasks);
+        console.log(this.state.tasks);
         const ind_task_comp = this.state.tasks.map(value => {
             return <TasksComp key = {value._id} task = {value} checkboxClicked = {this.checkboxClicked} />
         })
