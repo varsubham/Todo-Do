@@ -147,7 +147,14 @@ class MainPage extends React.Component{
         //console.log(this.state.tasks);
         console.log(this.state.tasks);
         const ind_task_comp = this.state.tasks.map(value => {
-            return <TasksComp key = {value._id} task = {value} checkboxClicked = {this.checkboxClicked} />
+            let subtasks_length = value.subtasks.length;
+            let checked_number = 0 ;
+            for(let i of value.subtasks){
+                if(i.isCompleted)
+                    checked_number += 1;
+            }
+            let progress_percent = Math.round((checked_number / subtasks_length) * 100);
+            return <TasksComp key = {value._id} task = {value} checkboxClicked = {this.checkboxClicked} progress_percent = {progress_percent} />
         })
     return (
         <div>
