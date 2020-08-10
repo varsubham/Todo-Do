@@ -15,19 +15,20 @@ class TasksComp extends React.Component{
         let progress_percent = `${this.props.progress_percent}%`
         return (
             <div id = {this.props.task._id} className = "task-border">
-        <div class = "main-task">
-            <h4>{this.props.task.maintitle}</h4>
-            <div class="progress" style = {{width: "100%", margin: "auto", height: "25px", backgroundColor: "white"}}>
-    <div class="progress-bar progress-bar-striped progress-bar-animated" style={{width: progress_percent, height: "25px"}}>{progress_percent}</div>
-  </div>
-        </div>
-        <div class = 'divider'></div>
-        <div class = "sub-tasks">
-            <h4>Sub-Tasks:-</h4>
-            {sub_tasks_comp}
-
-        </div>
-    </div>
+                <div class = "main-task">
+                    <h4>{this.props.task.maintitle}</h4>
+                    <div class="progress" style = {{width: "100%", margin: "auto", height: "25px", backgroundColor: "white"}}>
+                        <div class="progress-bar progress-bar-striped progress-bar-animated" style={{width: progress_percent, height: "25px"}}>
+                            {progress_percent}
+                        </div>
+                    </div>
+                </div>
+                <div class = 'divider'></div>
+                <div class = "sub-tasks">
+                    <h4>Sub-Tasks:-</h4>
+                    {sub_tasks_comp}
+                </div>
+            </div>
         )
     }
 }
