@@ -24,7 +24,11 @@ const userDetailSchema = new Schema({
                 isCompleted: {
                     type: Boolean,
                 }
-            }
+            },
+            position:{
+                offSetTop: {type: Number, default: 0,},
+                offSetLeft: {type: Number, default: 0,},
+            },
         }
     ]
     

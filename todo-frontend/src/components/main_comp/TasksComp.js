@@ -14,7 +14,7 @@ class TasksComp extends React.Component{
         })
         let progress_percent = `${this.props.progress_percent}%`
         return (
-            <div id = {this.props.task._id} className = "task-border">
+            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`}}>
                 <div class = "main-task">
                     <h4>{this.props.task.maintitle}</h4>
                     <div class="progress" style = {{width: "100%", margin: "auto", height: "25px", backgroundColor: "white"}}>

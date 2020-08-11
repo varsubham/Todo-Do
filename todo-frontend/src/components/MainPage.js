@@ -18,10 +18,12 @@ class MainPage extends React.Component{
             username: "",               // current logged in username(email)
             tasks: [],
             userdetail_id : "",
+            taskCompPosition: [],
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
         this.checkboxClicked = this.checkboxClicked.bind(this);
-        this.update_db = this.update_db.bind(this);
+        //this.update_db = this.update_db.bind(this);
+        this.onchangePosition = this.onchangePosition.bind(this);
     }
     onLogoutClick(e){
         e.preventDefault();
@@ -73,8 +75,16 @@ class MainPage extends React.Component{
         tasks_get(this.state.username, () => {
             this.setState({tasks: tasks_list[0].tasks});
             //console.log(tasks_list[0]._id);
-            this.setState({userdetail_id: tasks_list[0]._id})
+            this.setState({userdetail_id: tasks_list[0]._id});
             //console.log(tasks_list[0].tasks);
+            //console.log(tasks_list[0]);
+            let temp_position = tasks_list[0].tasks.map((val) => {
+                return (() => {
+                    return {_id: val._id, position: val.position}
+                })();
+            });
+            //console.log(temp_position);
+            this.setState({taskCompPosition: temp_position}, () => console.log(this.state));
         })
 
 
@@ -111,9 +121,9 @@ class MainPage extends React.Component{
                     }
                 }
             }
+            console.log(copy_state);
 
-
-            this.setState({tasks: copy_state}, this.update_db);
+            this.setState({tasks: copy_state}, (this.update_db));
             // const updated_task_details = {
             //     email: this.state.username,
             //     tasks: this.state.tasks,
@@ -126,10 +136,14 @@ class MainPage extends React.Component{
             //console.log(subtask_text,"     ", task_id);
             // console.log(this.state.tasks);
             // console.log(copy_state);
-            console.log(this.state.username);
-            
+            //console.log(this.state.username);
+            // update_db(){
+                
+                
+            // }
         }
         update_db(){
+            console.log(this.state.tasks);
             const updated_task_details = {
                 email: this.state.username,
                 tasks: this.state.tasks,
@@ -138,9 +152,34 @@ class MainPage extends React.Component{
             .then(res => {
                 console.log(res);
                 console.log(res.data);
-              });
-            
+            });
         }
+        
+        onchangePosition(comp_id){
+            const k_left = document.getElementById(comp_id).offsetLeft;
+            const k_top = document.getElementById(comp_id).offsetTop;
+            setTimeout(() => {
+                let copy_state = _.cloneDeep(this.state.tasks);
+            console.log(copy_state);
+            for(let i of copy_state){
+                if(i._id === comp_id)
+                    i.position = {offSetLeft: k_left, offSetTop: k_top};
+            }
+            //console.log(copy_state);
+            //console.log(this.state.tasks);
+            this.setState({tasks: copy_state}, this.update_db);
+            }, 300)
+            // let copy_state = _.cloneDeep(this.state.tasks);
+            // console.log(copy_state);
+            // for(let i of copy_state){
+            //     if(i._id === comp_id)
+            //         i.position = {offSetLeft: k_left, offSetTop: k_top};
+            // }
+            // //console.log(copy_state);
+            // //console.log(this.state.tasks);
+            // this.setState({tasks: copy_state}, this.update_db);
+            }
+        
     render(){
         
         
@@ -154,7 +193,7 @@ class MainPage extends React.Component{
                     checked_number += 1;
             }
             let progress_percent = Math.round((checked_number / subtasks_length) * 100);
-            return <TasksComp key = {value._id} task = {value} checkboxClicked = {this.checkboxClicked} progress_percent = {progress_percent} />
+            return <TasksComp key = {value._id} changePosition = {this.onchangePosition} position = {value.position} task = {value} checkboxClicked = {this.checkboxClicked} progress_percent = {progress_percent} />
         })
     return (
         <div>
