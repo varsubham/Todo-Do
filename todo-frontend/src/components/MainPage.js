@@ -13,12 +13,14 @@ import _ from 'lodash';
 class MainPage extends React.Component{
     constructor(props){
         super(props);
+        let isLoading = true;
         this.state = {
             current_user: {},            // detail of current logged in user
             username: "",               // current logged in username(email)
             tasks: [],
             userdetail_id : "",
             taskCompPosition: [],
+            isLoading
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
         this.checkboxClicked = this.checkboxClicked.bind(this);
@@ -68,12 +70,15 @@ class MainPage extends React.Component{
                     callback();
                 }
                 //console.log(tasks_list);
+                else{
+                    this.setState({isLoading: false});
+                }
         
             });
             
         }
         tasks_get(this.state.username, () => {
-            this.setState({tasks: tasks_list[0].tasks});
+            this.setState({tasks: tasks_list[0].tasks}, () => this.setState({isLoading: false}));
             //console.log(tasks_list[0]._id);
             this.setState({userdetail_id: tasks_list[0]._id});
             //console.log(tasks_list[0].tasks);
@@ -198,7 +203,20 @@ class MainPage extends React.Component{
     return (
         <div>
             <MainNavBar function1 = {this.onLogoutClick} name = {this.state.username}/>
-            {this.state.tasks.length > 0 ? ind_task_comp : <EmptyComp />}
+            {
+                this.state.isLoading ? 
+                <div className = "text-center">
+                    <h1 style = {{fontSize: "70px" , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                        Loading
+                        <div class="spinner-border" style={{width: "10rem", height: "10rem"}} role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                    </h1>
+                </div> : 
+                this.state.tasks.length > 0 ? 
+                ind_task_comp : 
+                <EmptyComp />
+            }
             
         </div>
     )
