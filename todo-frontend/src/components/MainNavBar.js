@@ -12,6 +12,7 @@ class NavBar extends React.Component{
         this.props.function1(event);
 
     }
+    
     render(){
         //console.log(this.props.user);
     return (
@@ -33,8 +34,8 @@ class NavBar extends React.Component{
                     </div>
                     <div style = {{display: "flex", justifyContent: "space-evenly", alignItems: 'center'}} >
                         <div className = "dropdown">
-                            <Link id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link" to = '#' style = {{fontSize: "28px", fontWeight: "bold", marginLeft: "24px"}}><i className="fa fa-plus" style={{fontSize: "36px", color:"#217A7A"}}></i></Link>
-                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style = {{ top: '0',border: 'none', backgroundColor: 'transparent'}}>
+                            <Link id="navbarDropdown"   onClick = {() => document.getElementById('xyz').classList.toggle("show")} aria-haspopup="true" aria-expanded="false" className="nav-link " to = '#' style = {{fontSize: "28px", fontWeight: "bold", marginLeft: "24px"}}><i className="fa fa-plus drop_button" style={{fontSize: "36px", color:"#217A7A"}}></i></Link>
+                            <div onClick = {(event) => event.stopPropagation()} id = 'xyz' className="dropdown-menu dropdown-menu-right drop_down_click" aria-labelledby="navbarDropdown" style = {{ top: '0',border: 'none', backgroundColor: 'transparent'}}>
                                 <AddTask />
                             </div>
                         </div>
