@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import AddTask from './main_comp/adding_tasks/AddTask';
 const logo = require('../images/logo3.svg');
 class NavBar extends React.Component{
     constructor(){
@@ -11,7 +12,6 @@ class NavBar extends React.Component{
         this.props.function1(event);
 
     }
-    
     render(){
         //console.log(this.props.user);
     return (
@@ -31,7 +31,13 @@ class NavBar extends React.Component{
                             
                         </div>
                     </div>
-                    <div style = {{display: "flex", justifyContent: "space-evenly"}} >
+                    <div style = {{display: "flex", justifyContent: "space-evenly", alignItems: 'center'}} >
+                        <div className = "dropdown">
+                            <Link id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link" to = '#' style = {{fontSize: "28px", fontWeight: "bold", marginLeft: "24px"}}><i className="fa fa-plus" style={{fontSize: "36px", color:"#217A7A"}}></i></Link>
+                            <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style = {{ top: '0',border: 'none', backgroundColor: 'transparent'}}>
+                                <AddTask />
+                            </div>
+                        </div>
                         <div className = "dropdown">
                             <Link id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" className="nav-link" to = '#' style = {{fontSize: "28px", fontWeight: "bold", marginLeft: "24px"}}><i className="fa fa-user-circle-o" style={{fontSize: "56px", color:"#217A7A"}}></i></Link>
                             <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style = {{padding: "40px 30px", boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
