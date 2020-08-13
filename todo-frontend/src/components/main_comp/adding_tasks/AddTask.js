@@ -2,6 +2,7 @@ import React from 'react';
 import SubTaskInput from './SubTaskInput';
 import store from '../../../store';
 import axios from 'axios';
+import _ from 'lodash';
 class AddTask extends React.Component{
     constructor(){
         super();
@@ -10,17 +11,31 @@ class AddTask extends React.Component{
             username: '',
             usertaskfound: false,
             usertaskdetail: {},
+            main_title: '',
+            subtask_input: [''],
         }
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
+        this.onChangeInput = this.onChangeInput.bind(this);
+        this.onChangeMain_title = this.onChangeMain_title.bind(this);
     }
     increment(){
-        this.setState({subtask_count: this.state.subtask_count + 1});
+        this.setState({subtask_count: this.state.subtask_count + 1}, this.setState({subtask_input: (() => {
+            let temp = _.cloneDeep(this.state.subtask_input);
+            temp.push('');
+            return temp;
+        })()}));
+        //this.setState({subtask_input: this.state.subtask_input.push('')});
     }
     decrement(){
-        if(this.state.subtask_count >= 2)
-            this.setState({subtask_count: this.state.subtask_count - 1});
-    }
+        if(this.state.subtask_count >= 2){
+            this.setState({subtask_count: this.state.subtask_count - 1},this.setState({subtask_input: (() => {
+                let temp = _.cloneDeep(this.state.subtask_input);
+                temp.pop();
+                return temp;
+            })()}) );
+            //this.setState({subtask_input: this.state.subtask_input.pop()});
+    }}
     componentDidMount(){
         axios.get('http://localhost:5000/api/users/')
         .then(res => {
@@ -46,15 +61,29 @@ class AddTask extends React.Component{
             });
         })
     }
+    onChangeInput(id, event){
+        this.setState({subtask_input: (() =>{
+            let copy_subtask_input = _.cloneDeep(this.state.subtask_input);
+            copy_subtask_input[id - 1] = event.target.value;
+            return copy_subtask_input;
+        })()})
+    }
+    onChangeMain_title(e){
+        this.setState({main_title: e.target.value})
+    }
+    onSave(){
+        
+    }
     render(){
         //console.log(this.props.auth.user);
         //console.log(store.getState().auth.user);
         //console.log(this.state.usertaskfound);
-        console.log(this.state.usertaskdetail)
+        // console.log(this.state.subtask_input);
+        // console.log(this.state.main_title);
         let temp_arr = [];
         let subtaskinput = () => {
             for(let i = 1; i <= this.state.subtask_count; i++){
-                temp_arr.push(<SubTaskInput id = {i}/>);
+                temp_arr.push(<SubTaskInput id = {i} onChangeInput = {this.onChangeInput} subtask_text = {this.state.subtask_input[i - 1]}/>);
             }
             return temp_arr;
         }
@@ -63,7 +92,7 @@ class AddTask extends React.Component{
         <div style = {{display: "flex", justifyContent: 'center', marginTop: '50px'}}> 
         <div className = "task-border" style = {{textAlign: "center", cursor: 'default', backgroundColor: "white", border: 'none', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
                 <div class = "main-task">
-                    <input style = {{marginBottom: "10px"}} type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Task Main-Title"/>
+                    <input style = {{marginBottom: "10px"}} type="text" class="form-control" onChange = {this.onChangeMain_title} value = {this.main_title} id="main_title" aria-describedby="emailHelp" placeholder="Task Main-Title"/>
                     
                         <div style = {{display: 'flex'}}>
                             <div style = {{marginRight: "8px"}}>
@@ -73,7 +102,7 @@ class AddTask extends React.Component{
                                 <button onClick = {this.decrement} type="button" class="btn btn-primary"><i class="fa fa-minus" style={{fontSize: '16px'}}></i></button>
                             </div>
                             <div style = {{marginLeft: '70px'}}>
-                                <button type="button" class="btn btn-primary">Save</button>
+                                <button type="button" onClick = {this.onSave} class="btn btn-primary">Save</button>
                             </div>
                         </div>
                 </div>
