@@ -1,12 +1,15 @@
 import React from 'react';
 import SubTaskInput from './SubTaskInput';
-
+import store from '../../../store';
+import axios from 'axios';
 class AddTask extends React.Component{
     constructor(){
         super();
         this.state = {
             subtask_count: 1,
             username: '',
+            usertaskfound: false,
+            usertaskdetail: {},
         }
         this.increment = this.increment.bind(this);
         this.decrement = this.decrement.bind(this);
@@ -19,10 +22,35 @@ class AddTask extends React.Component{
             this.setState({subtask_count: this.state.subtask_count - 1});
     }
     componentDidMount(){
-        
+        axios.get('http://localhost:5000/api/users/')
+        .then(res => {
+            //console.log(res.data);
+            const current_user_arr = res.data.filter(val => {
+                if(val._id === store.getState().auth.user.id)
+                    return val;
+            });
+            this.setState({username: current_user_arr[0].email}, () => {
+                axios.get('http://localhost:5000/api/users/tasks/')
+                .then(res => {
+                    const current_user_task = res.data.filter(val => {
+                        if(val.email === this.state.username){
+                            this.setState({usertaskfound: true});
+                            return val;
+                            
+                        }
+                    })
+                    this.setState({usertaskdetail: current_user_task[0]});
+                    if(!current_user_task.length)
+                        this.setState({usertaskfound: false});
+                })
+            });
+        })
     }
     render(){
         //console.log(this.props.auth.user);
+        //console.log(store.getState().auth.user);
+        //console.log(this.state.usertaskfound);
+        console.log(this.state.usertaskdetail)
         let temp_arr = [];
         let subtaskinput = () => {
             for(let i = 1; i <= this.state.subtask_count; i++){
