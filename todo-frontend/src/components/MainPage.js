@@ -19,7 +19,7 @@ class MainPage extends React.Component{
             username: "",               // current logged in username(email)
             tasks: [],
             userdetail_id : "",
-            taskCompPosition: [],
+            //taskCompPosition: [],
             isLoading
         }
         this.onLogoutClick = this.onLogoutClick.bind(this);
@@ -83,13 +83,13 @@ class MainPage extends React.Component{
             this.setState({userdetail_id: tasks_list[0]._id});
             //console.log(tasks_list[0].tasks);
             //console.log(tasks_list[0]);
-            let temp_position = tasks_list[0].tasks.map((val) => {
-                return (() => {
-                    return {_id: val._id, position: val.position}
-                })();
-            });
+            // let temp_position = tasks_list[0].tasks.map((val) => {
+            //     return (() => {
+            //         return {_id: val._id, position: val.position}
+            //     })();
+            // });
             //console.log(temp_position);
-            this.setState({taskCompPosition: temp_position}, () => console.log(this.state));
+            //this.setState({taskCompPosition: temp_position}, () => console.log(this.state));
         })
 
 
@@ -189,7 +189,7 @@ class MainPage extends React.Component{
         
         
         //console.log(this.state.tasks);
-        console.log(this.state.tasks);
+        //console.log(this.state.tasks);
         const ind_task_comp = this.state.tasks.map(value => {
             let subtasks_length = value.subtasks.length;
             let checked_number = 0 ;
