@@ -18,6 +18,7 @@ class AddTask extends React.Component{
         this.decrement = this.decrement.bind(this);
         this.onChangeInput = this.onChangeInput.bind(this);
         this.onChangeMain_title = this.onChangeMain_title.bind(this);
+        this.onSave = this.onSave.bind(this);
     }
     increment(){
         this.setState({subtask_count: this.state.subtask_count + 1}, this.setState({subtask_input: (() => {
@@ -72,7 +73,35 @@ class AddTask extends React.Component{
         this.setState({main_title: e.target.value})
     }
     onSave(){
-        
+        if(!this.state.usertaskfound){
+            let sub_task_temp = this.state.subtask_input.map((val, index) => {
+                return {
+                    id: index + 1,
+                    text: val,
+                    isCompleted: false
+                }
+            });
+            let temp_task = [
+                {
+                    subtasks: sub_task_temp,
+                    maintitle: this.state.main_title,
+                    position: {
+                        offSetTop: 104,
+                        offSetLeft: 104,
+                    },
+                }
+            ]
+            //console.log(sub_task_temp);
+            const userdetail = {
+                email: this.state.username,
+                tasks: temp_task,
+            }
+            axios.post('http://localhost:5000/api/users/tasks/', userdetail)
+            .then(res => {
+                console.log(res.data);
+                window.location.reload(false);
+            });
+        }
     }
     render(){
         //console.log(this.props.auth.user);
