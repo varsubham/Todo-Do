@@ -148,7 +148,7 @@ class MainPage extends React.Component{
             // }
         }
         update_db(){
-            console.log(this.state.tasks);
+            //console.log(this.state.tasks);
             const updated_task_details = {
                 email: this.state.username,
                 tasks: this.state.tasks,
@@ -165,7 +165,7 @@ class MainPage extends React.Component{
             const k_top = document.getElementById(comp_id).offsetTop;
             setTimeout(() => {
                 let copy_state = _.cloneDeep(this.state.tasks);
-            console.log(copy_state);
+            //console.log(copy_state);
             for(let i of copy_state){
                 if(i._id === comp_id)
                     i.position = {offSetLeft: k_left, offSetTop: k_top};
