@@ -53,7 +53,15 @@ router.route('/tasks/:id').post((req, res) => {
     })
     .catch(err => res.status(400).json('Error: ', err));
 })
-
+//Push Tasks to UserDetails
+router.route('/tasks/update/:id').post((req, res) => {
+    UserDetail.findByIdAndUpdate(
+        {_id: req.params.id},
+        { $push: { tasks: req.body.tasks}}
+    ).then(() => res.json('New Task Pushed'))
+    .catch(err => console.log(err));
+    
+})
 //Register end point
 router.route('/register').post((req, res) => {
     // Form validation

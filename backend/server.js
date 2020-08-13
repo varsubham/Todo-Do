@@ -21,7 +21,7 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log("MongoDB databse connection established!")
 });
-
+mongoose.set('useFindAndModify', false);
 //importing endpoints user
 
 //Passport middleware

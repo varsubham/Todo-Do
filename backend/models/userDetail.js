@@ -23,6 +23,9 @@ const userDetailSchema = new Schema({
                 },
                 isCompleted: {
                     type: Boolean,
+                },
+                id: {
+                    type: Number,
                 }
             },
             position:{
