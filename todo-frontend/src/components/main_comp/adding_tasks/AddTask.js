@@ -139,7 +139,7 @@ class AddTask extends React.Component{
         let temp_arr = [];
         let subtaskinput = () => {
             for(let i = 1; i <= this.state.subtask_count; i++){
-                temp_arr.push(<SubTaskInput id = {i} onChangeInput = {this.onChangeInput} subtask_text = {this.state.subtask_input[i - 1]}/>);
+                temp_arr.push(<SubTaskInput key = {i} id = {i} onChangeInput = {this.onChangeInput} subtask_text = {this.state.subtask_input[i - 1]}/>);
             }
             return temp_arr;
         }
@@ -147,23 +147,23 @@ class AddTask extends React.Component{
         <div>
         <div style = {{display: "flex", justifyContent: 'center', marginTop: '50px'}}> 
         <div className = "task-border" style = {{textAlign: "center", cursor: 'default', backgroundColor: "white", border: 'none', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
-                <div class = "main-task">
-                    <input style = {{marginBottom: "10px"}} type="text" class="form-control" onChange = {this.onChangeMain_title} value = {this.main_title} id="main_title" aria-describedby="emailHelp" placeholder="Task Main-Title"/>
+                <div className = "main-task">
+                    <input style = {{marginBottom: "10px"}} type="text" className="form-control" onChange = {this.onChangeMain_title} value = {this.main_title} id="main_title" aria-describedby="emailHelp" placeholder="Task Main-Title"/>
                     
                         <div style = {{display: 'flex'}}>
                             <div style = {{marginRight: "8px"}}>
-                                <button onClick = {this.increment} type="button" class="btn btn-primary"><i class="fa fa-plus" style={{fontSize: '16px'}}></i></button>
+                                <button onClick = {this.increment} type="button" className="btn btn-primary"><i className="fa fa-plus" style={{fontSize: '16px'}}></i></button>
                             </div>
                             <div>
-                                <button onClick = {this.decrement} type="button" class="btn btn-primary"><i class="fa fa-minus" style={{fontSize: '16px'}}></i></button>
+                                <button onClick = {this.decrement} type="button" className="btn btn-primary"><i className="fa fa-minus" style={{fontSize: '16px'}}></i></button>
                             </div>
                             <div style = {{marginLeft: '70px'}}>
-                                <button type="button" onClick = {this.onSave} class="btn btn-primary">Save</button>
+                                <button type="button" onClick = {this.onSave} className="btn btn-primary">Save</button>
                             </div>
                         </div>
                 </div>
                 <div className="dropdown-divider"></div>
-                <div class = "sub-tasks" style = {{border: '1px solid #217a7a'}}>
+                <div className = "sub-tasks" style = {{border: '1px solid #217a7a'}}>
                     <h4>Sub-Tasks:-</h4>
                     {subtaskinput()}
                 </div>

@@ -208,8 +208,8 @@ class MainPage extends React.Component{
                 <div className = "text-center">
                     <h1 style = {{fontSize: "70px" , display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                         Loading
-                        <div class="spinner-border" style={{width: "10rem", height: "10rem"}} role="status">
-                            <span class="sr-only">Loading...</span>
+                        <div className="spinner-border" style={{width: "10rem", height: "10rem"}} role="status">
+                            <span className="sr-only">Loading...</span>
                         </div>
                     </h1>
                 </div> : 
