@@ -10,7 +10,8 @@ class TasksComp extends React.Component{
     render(){
         console.log(this.props);
         const sub_tasks_comp = this.props.task.subtasks.map(value => {
-            return <SubTaskComp subtask = {value} checkboxClicked = {this.props.checkboxClicked} task_id = {this.props.task._id}/>
+            // console.log(value.id);
+            return <SubTaskComp key = {value.id} subtask = {value} checkboxClicked = {this.props.checkboxClicked} task_id = {this.props.task._id}/>
         })
         let progress_percent = `${this.props.progress_percent}%`
         return (

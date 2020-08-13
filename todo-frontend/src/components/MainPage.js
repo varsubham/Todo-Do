@@ -104,7 +104,7 @@ class MainPage extends React.Component{
         //tasks_get(this.state.username, () => {
             
         }
-        checkboxClicked(subtask_text, task_id){
+        checkboxClicked(subtask_id, task_id){
             let copy_state = _.cloneDeep(this.state.tasks);
             // let copy_state = this.state.tasks.map(val => {
             //     if(val._id === task_id){
@@ -121,7 +121,7 @@ class MainPage extends React.Component{
             for(let i of copy_state){
                 if(i._id === task_id){
                     for(let j of i.subtasks){
-                        if(j.text === subtask_text)
+                        if(j.id === subtask_id)
                             j.isCompleted = !j.isCompleted;
                     }
                 }
