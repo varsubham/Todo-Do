@@ -15,9 +15,9 @@ class TasksComp extends React.Component{
         })
         let progress_percent = `${this.props.progress_percent}%`;
         return (
-            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`}}>
+            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, width: '300px'}}>
                 <div className = "main-task">
-                    <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "8px"}}>
+                    <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                         <h4>{this.props.task.maintitle}</h4>
                         <div><i onClick = {() => this.props.ondelete(this.props.task._id)} class="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
                     </div>
