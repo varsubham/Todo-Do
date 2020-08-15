@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import NavBar from './NavBar';
-
+import store from '../store'
 const logo = require('../images/logo4.svg');
 
 class Landing extends React.Component{
@@ -13,6 +13,8 @@ class Landing extends React.Component{
     }
     
     render(){
+        if(store.getState().auth.isAuthenticated)
+            return <Redirect to ='/main'/>
     return (
         <div>
             <NavBar/>
