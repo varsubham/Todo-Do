@@ -13,11 +13,15 @@ class TasksComp extends React.Component{
             // console.log(value.id);
             return <SubTaskComp key = {value.id} subtask = {value} checkboxClicked = {this.props.checkboxClicked} task_id = {this.props.task._id}/>
         })
-        let progress_percent = `${this.props.progress_percent}%`
+        let progress_percent = `${this.props.progress_percent}%`;
         return (
             <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`}}>
                 <div className = "main-task">
-                    <h4>{this.props.task.maintitle}</h4>
+                    <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: "8px"}}>
+                        <h4>{this.props.task.maintitle}</h4>
+                        <div><i onClick = {() => this.props.ondelete(this.props.task._id)} class="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
+                    </div>
+                    
                     <div className="progress" style = {{width: "100%", margin: "auto", height: "25px", backgroundColor: "white"}}>
                         <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: progress_percent, height: "25px"}}>
                             {progress_percent}

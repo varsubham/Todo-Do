@@ -30,7 +30,8 @@ let k = [1,2,4,5,6];
 
 let k1 = k.filter(val => {
     if(val === 4)
-        return true;
+        return false;
+    else return true;
 })
 
 console.log(k1);

@@ -26,6 +26,7 @@ class MainPage extends React.Component{
         this.checkboxClicked = this.checkboxClicked.bind(this);
         //this.update_db = this.update_db.bind(this);
         this.onchangePosition = this.onchangePosition.bind(this);
+        this.ondelete = this.ondelete.bind(this);
     }
     onLogoutClick(e){
         e.preventDefault();
@@ -184,7 +185,19 @@ class MainPage extends React.Component{
             // //console.log(this.state.tasks);
             // this.setState({tasks: copy_state}, this.update_db);
             }
-        
+            ondelete(id){
+                // console.log(this.state.tasks);
+                // console.log(id);
+                const updated_task = this.state.tasks.filter(val => {
+                    if(val._id === id)
+                        return false;
+                    else return true;
+                });
+                // console.log(updated_task);
+                if(window.confirm('Do you Really Want to delete your Task ?'))
+                    this.setState({tasks: updated_task}, () => console.log(this.state.tasks));
+                
+            }
     render(){
         
         
@@ -198,7 +211,7 @@ class MainPage extends React.Component{
                     checked_number += 1;
             }
             let progress_percent = Math.round((checked_number / subtasks_length) * 100);
-            return <TasksComp key = {value._id} changePosition = {this.onchangePosition} position = {value.position} task = {value} checkboxClicked = {this.checkboxClicked} progress_percent = {progress_percent} />
+            return <TasksComp key = {value._id} ondelete = {this.ondelete} changePosition = {this.onchangePosition} position = {value.position} task = {value} checkboxClicked = {this.checkboxClicked} progress_percent = {progress_percent} />
         })
     return (
         <div>
