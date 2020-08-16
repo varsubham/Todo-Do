@@ -15,27 +15,29 @@ class TasksComp extends React.Component{
         })
         let progress_percent = `${this.props.progress_percent}%`;
         return (
-            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, width: '300px'}}>
+            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, padding: "0",border: 'none', backgroundColor: '#73C2FB', width: '300px', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
                 <div className = "main-task">
-                    <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '0 8px'}}>
-                        <div>
-                            <i id = {this.props.task._id+'header'} class="fa fa-arrows" style = {{fontSize: '36px', cursor: 'move'}}></i>
+                    <div style = {{backgroundColor: '#4CAFF7', boxShadow: "0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" , borderRadius: '6px 6px 0 0', padding: '12px 12px 12px 12px', color: 'white', marginBottom: '18px'}}>
+                        <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
+                            <div>
+                                <i id = {this.props.task._id+'header'} class="fa fa-arrows" style = {{fontSize: '30px', cursor: 'move'}}></i>
+                            </div>
+                            <div><i onClick = {() => this.props.ondelete(this.props.task._id)} class="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
                         </div>
-                        <div><i onClick = {() => this.props.ondelete(this.props.task._id)} class="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
+                        <div style = {{}}>
+                            <h2 style = {{}}>{this.props.task.maintitle}</h2>
+                        </div>
                     </div>
-                    <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                        <h4>{this.props.task.maintitle}</h4>
-                        
-                    </div>
-                    <div className="progress" style = {{width: "100%", margin: "auto", height: "25px", backgroundColor: "white"}}>
-                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: progress_percent, height: "25px"}}>
+                    <div className="progress" style = {{width: "96%", margin: "auto", height: "16px", backgroundColor: "white", marginBottom: '18px'}}>
+                        <div className="progress-bar progress-bar-striped progress-bar-animated" style={{width: progress_percent, height: "16px", backgroundColor: '#00743f'}}>
                             {progress_percent}
                         </div>
                     </div>
+                    <hr style = {{width:'90%'}}/>
                 </div>
-                <div className = 'divider'></div>
-                <div className = "sub-tasks">
-                    <h4>Sub-Tasks:-</h4>
+                
+                <div className = "sub-tasks" style = {{border: 'none', marginBottom: '12px'}}>
+                    <h4 style = {{color: 'white', marginBottom: '8px'}}>Sub-Tasks:-</h4>
                     {sub_tasks_comp}
                 </div>
             </div>
