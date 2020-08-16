@@ -6,7 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 html{
   background-size: cover;
