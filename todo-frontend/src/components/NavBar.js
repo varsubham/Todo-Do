@@ -4,7 +4,7 @@ const logo = require('../images/logo3.svg');
 function NavBar(){
     return (
         <div>
-            <nav className="navbar  navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-custom navbar-expand-lg navbar-dark ">
                 <div className="container">
                     <Link  className="navbar-brand" style = {{paddingLeft: "20px"}} to = '/'>
                         <img src={logo} height = "70" className="d-inline-block align-top" alt = ""/> 

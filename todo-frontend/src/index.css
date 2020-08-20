@@ -19,6 +19,10 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.navbar-custom{
+  background-image: linear-gradient(#73C2FB, #77C6FF);
+  box-shadow: 0 2px 2px 0.25px rgba(0, 0, 0, 0.25);
+}
 .container{
   max-width: 1300px;
 }

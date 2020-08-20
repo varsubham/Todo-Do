@@ -36,7 +36,7 @@
 
 // console.log(k1);
 
-<form className = "contact" onSubmit = {this.onSubmit}>
+{/* <form className = "contact" onSubmit = {this.onSubmit}>
                     <div className="details" style = {{marginTop: "80px"}}>
                         <div className="red-bg">
                             <h1 style = {{color: "black", paddingTop: "30px", fontWeight: "bold", fontSize: "50px"}}>Sign in</h1>
@@ -89,4 +89,4 @@
                             </div>
                         </div>
                     </div>
-                </form>
+                </form> */}
