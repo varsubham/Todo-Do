@@ -74,34 +74,34 @@ class Login extends React.Component{
     return (
             <div>
                 <NavBar/>
-                <img class="wave" src={wave}/>
-                    <div class="container2">
-                        <div class="img2">
+                <img className="wave" src={wave}/>
+                    <div className="container2">
+                        <div className="img2">
                             <img src={bg3}/>
                         </div>
-                        <div class="login-content">
+                        <div className="login-content">
                             <form onSubmit = {this.onSubmit}>
                                 <img src={avatar1}/>
-                                <h2 class="title">Login</h2>
-                                <div class="input-div one">
-                                <div class="i">
-                                        <i class="fas fa-user"></i>
+                                <h2 className="title">Login</h2>
+                                <div className="input-div one">
+                                <div className="i">
+                                        <i className="fas fa-user"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Username</h5>
-                                        <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} class="input2"/>
+                                        <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} className="input2"/>
                                 </div>
                                 </div>
-                                <div class="input-div pass">
-                                <div class="i"> 
-                                        <i class="fas fa-lock"></i>
+                                <div className="input-div pass">
+                                <div className="i"> 
+                                        <i className="fas fa-lock"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Password</h5>
-                                        <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" class="input2"/>
+                                        <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" className="input2"/>
                                 </div>
                                 </div>
-                                <input type="submit" class="btn2" value="Login"/>
+                                <input type="submit" className="btn2" value="Login"/>
                                 <p>Don't have an account? <Link to = "/register">Sign Up</Link></p>
                             </form>
                         </div>

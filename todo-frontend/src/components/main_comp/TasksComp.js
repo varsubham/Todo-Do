@@ -20,9 +20,9 @@ class TasksComp extends React.Component{
                     <div style = {{backgroundColor: '#4CAFF7', boxShadow: "0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" , borderRadius: '6px 6px 0 0', padding: '12px 12px 12px 12px', color: 'white', marginBottom: '18px'}}>
                         <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
                             <div>
-                                <i id = {this.props.task._id+'header'} class="fa fa-arrows" style = {{fontSize: '30px', cursor: 'move'}}></i>
+                                <i id = {this.props.task._id+'header'} className="fa fa-arrows" style = {{fontSize: '30px', cursor: 'move'}}></i>
                             </div>
-                            <div><i onClick = {() => this.props.ondelete(this.props.task._id)} class="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
+                            <div><i onClick = {() => this.props.ondelete(this.props.task._id)} className="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
                         </div>
                         <div style = {{}}>
                             <h2 style = {{}}>{this.props.task.maintitle}</h2>

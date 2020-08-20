@@ -72,52 +72,52 @@ class Register extends React.Component{
         return (
             <div>
                 <NavBar/>
-                    <img class="wave" src={wave}/>
-                    <div class="container2">
-                        <div class="img2">
+                    <img className="wave" src={wave}/>
+                    <div className="container2">
+                        <div className="img2">
                             <img src={bg3}/>
                         </div>
-                        <div class="login-content">
+                        <div className="login-content">
                             <form onSubmit = {this.onSumbit}>
                                 {/* <img src={avatar1}/> */}
-                                <h2 class="title">Register</h2>
-                                <div class="input-div one">
-                                <div class="i">
-                                        <i class="fas fa-user"></i>
+                                <h2 className="title">Register</h2>
+                                <div className="input-div one">
+                                <div className="i">
+                                        <i className="fas fa-user"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Name</h5>
-                                        <input autoComplete="no" className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" class="input2"/>
+                                        <input autoComplete="no" className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" className="input2"/>
                                 </div>
                                 </div>
-                                <div class="input-div one">
-                                <div class="i">
-                                        <i class="fas fa-user"></i>
+                                <div className="input-div one">
+                                <div className="i">
+                                        <i className="fas fa-user"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Email</h5>
-                                        <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" class="input2"/>
+                                        <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" className="input2"/>
                                 </div>
                                 </div>
-                                <div class="input-div pass">
-                                <div class="i"> 
-                                        <i class="fas fa-lock"></i>
+                                <div className="input-div pass">
+                                <div className="i"> 
+                                        <i className="fas fa-lock"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Password</h5>
-                                        <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" class="input2"/>
+                                        <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" className="input2"/>
                                 </div>
                                 </div>
-                                <div class="input-div pass">
-                                <div class="i"> 
-                                        <i class="fas fa-lock"></i>
+                                <div className="input-div pass">
+                                <div className="i"> 
+                                        <i className="fas fa-lock"></i>
                                 </div>
-                                <div class="div">
+                                <div className="div">
                                         <h5>Confirm Password</h5>
-                                        <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" class="input2"/>
+                                        <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" className="input2"/>
                                 </div>
                                 </div>
-                                <input type="submit" class="btn2" value="Register"/>
+                                <input type="submit" className="btn2" value="Register"/>
                                 <p>Already have an Account? <Link to = '/login'>Login</Link></p>
                             </form>
                         </div>
