@@ -6,6 +6,9 @@ import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
 import classnames from "classnames";
 import NavBar from './NavBar';
+const avatar1 = require('./img/avatar1.svg');
+const bg3 = require('./img/bg3.svg');
+const wave = require('./img/wave.svg');
 class Register extends React.Component{
     constructor(){
         super();
@@ -21,8 +24,24 @@ class Register extends React.Component{
     }
     componentDidMount(){
         //If logged in user navigates to register page
-        if(this.props.auth.isAuthenticated)
+        if(this.props.auth.isAuthenticated){
             this.props.history.push('/main');
+        }
+            const inputs = document.querySelectorAll(".input2");
+            function addcl(){
+                let parent = this.parentNode.parentNode;
+                parent.classList.add("focus");
+            }
+            function remcl(){
+                let parent = this.parentNode.parentNode;
+                if(this.value == ""){
+                    parent.classList.remove("focus");
+                }
+            }
+            inputs.forEach(input => {
+                input.addEventListener("focus", addcl);
+                input.addEventListener("blur", remcl);
+            });
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
@@ -53,36 +72,56 @@ class Register extends React.Component{
         return (
             <div>
                 <NavBar/>
-                <form className = "contact" onSubmit = {this.onSumbit}>
-                    <div className="details">
-                        <div className="red-bg">
-                            <h1 style = {{color: "black", paddingTop: "30px", fontWeight: "bold", fontSize: "50px"}}>Sign Up</h1>
-                            <div className="form">
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" placeholder="Name"/>
+                    <img class="wave" src={wave}/>
+                    <div class="container2">
+                        <div class="img2">
+                            <img src={bg3}/>
+                        </div>
+                        <div class="login-content">
+                            <form onSubmit = {this.onSumbit}>
+                                {/* <img src={avatar1}/> */}
+                                <h2 class="title">Register</h2>
+                                <div class="input-div one">
+                                <div class="i">
+                                        <i class="fas fa-user"></i>
                                 </div>
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" placeholder="Email Address"/>
+                                <div class="div">
+                                        <h5>Name</h5>
+                                        <input autoComplete="no" className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" class="input2"/>
                                 </div>
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" placeholder="Password"/>
                                 </div>
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" placeholder="Confirm Password"/>
+                                <div class="input-div one">
+                                <div class="i">
+                                        <i class="fas fa-user"></i>
                                 </div>
-                                
-                                <div className="inputbox1">
-                                    <button className="button-main" type = "submit" style = {{backgroundImage: "linear-gradient(#ffffff, #bebebe)", width: "fit-content", padding: "10px 30px"}} ><span style= {{color: "black", fontSize: "xx-large", fontWeight: "bold"}}>Sign Up</span></button>
+                                <div class="div">
+                                        <h5>Email</h5>
+                                        <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" class="input2"/>
                                 </div>
-                                <div style = {{borderBottom: "1px solid white", width: "90%", margin: "auto", paddingTop: "20px"}}></div>
-                            </div>
-                            
-                            <div style ={{padding: "10px"}}>
-                            <p style = {{color: "white", fontSize: "18px"}}>Already have an accout? <Link to = '/login' style = {{color: "white"}}>Sign in</Link></p>
-                            </div>
+                                </div>
+                                <div class="input-div pass">
+                                <div class="i"> 
+                                        <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                        <h5>Password</h5>
+                                        <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" class="input2"/>
+                                </div>
+                                </div>
+                                <div class="input-div pass">
+                                <div class="i"> 
+                                        <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                        <h5>Confirm Password</h5>
+                                        <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" class="input2"/>
+                                </div>
+                                </div>
+                                <input type="submit" class="btn2" value="Register"/>
+                                <p>Already have an Account? <Link to = '/login'>Login</Link></p>
+                            </form>
                         </div>
                     </div>
-                </form>
             </div>
         )
     }

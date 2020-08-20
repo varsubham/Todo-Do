@@ -82,7 +82,7 @@ class Login extends React.Component{
                         <div class="login-content">
                             <form onSubmit = {this.onSubmit}>
                                 <img src={avatar1}/>
-                                <h2 class="title">Welcome</h2>
+                                <h2 class="title">Login</h2>
                                 <div class="input-div one">
                                 <div class="i">
                                         <i class="fas fa-user"></i>
@@ -102,7 +102,7 @@ class Login extends React.Component{
                                 </div>
                                 </div>
                                 <input type="submit" class="btn2" value="Login"/>
-                                <p>Don't have an account? <a href="#">Sign Up</a></p>
+                                <p>Don't have an account? <Link to = "/register">Sign Up</Link></p>
                             </form>
                         </div>
                     </div>
