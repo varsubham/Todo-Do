@@ -49,7 +49,6 @@ class App extends React.Component {
     <div>
       <Provider store = {store}>
        <Router>
-         <h1>{this.state.loggedinuser}</h1>
          <Route path = "/" exact component = {Landing} />
          <Route path = "/login" exact component = {Login} />
          <Route path = "/register" exact component = {Register} />
