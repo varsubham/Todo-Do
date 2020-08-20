@@ -5,15 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed;
+  /* background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed; */
   /* overflow: hidden; */
 }
 html{
-  background-size: cover;
+  /* background-size: cover;
   -webkit-background-size: cover;
   -moz-background-size: cover;
-  -o-background-size: cover;
-  background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed;
+  -o-background-size: cover; */
+  /* background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed; */
 }
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

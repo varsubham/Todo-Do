@@ -6,6 +6,10 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";
 import classnames from "classnames";
+import './login.css';
+const avatar1 = require('./img/avatar1.svg');
+const bg3 = require('./img/bg3.svg');
+const wave = require('./img/wave.svg');
 class Login extends React.Component{
     constructor(props){
         super(props);
@@ -23,6 +27,22 @@ class Login extends React.Component{
         if (this.props.auth.isAuthenticated) {
           this.props.history.push("/main");
         }
+        const inputs = document.querySelectorAll(".input2");
+            function addcl(){
+                let parent = this.parentNode.parentNode;
+                parent.classList.add("focus");
+            }
+            function remcl(){
+                let parent = this.parentNode.parentNode;
+                if(this.value == ""){
+                    parent.classList.remove("focus");
+                }
+            }
+            inputs.forEach(input => {
+                input.addEventListener("focus", addcl);
+                input.addEventListener("blur", remcl);
+            });
+
       }
     componentWillReceiveProps(nextProps) {
         if (nextProps.auth.isAuthenticated) {
@@ -54,28 +74,38 @@ class Login extends React.Component{
     return (
             <div>
                 <NavBar/>
-                <form className = "contact" onSubmit = {this.onSubmit}>
-                    <div className="details" style = {{marginTop: "80px"}}>
-                        <div className="red-bg">
-                            <h1 style = {{color: "black", paddingTop: "30px", fontWeight: "bold", fontSize: "50px"}}>Sign in</h1>
-                            <div className="form">
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" placeholder="Email Address"/>
+                <img class="wave" src={wave}/>
+                    <div class="container2">
+                        <div class="img2">
+                            <img src={bg3}/>
+                        </div>
+                        <div class="login-content">
+                            <form onSubmit = {this.onSubmit}>
+                                <img src={avatar1}/>
+                                <h2 class="title">Welcome</h2>
+                                <div class="input-div one">
+                                <div class="i">
+                                        <i class="fas fa-user"></i>
                                 </div>
-                                <div className="inputbox">
-                                    <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" placeholder="Password"/>
+                                <div class="div">
+                                        <h5>Username</h5>
+                                        <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} class="input2"/>
                                 </div>
-                                <div className="inputbox1">
-                                    <button className="button-main" type = "submit" style = {{backgroundImage: "linear-gradient(#ffffff, #bebebe)", width: "fit-content", padding: "10px 30px"}} ><span style= {{color: "black", fontSize: "xx-large", fontWeight: "bold"}}>Sign in</span></button>
                                 </div>
-                                <div style = {{borderBottom: "1px solid white", width: "90%", margin: "auto", paddingTop: "20px"}}></div>
-                            </div>
-                            <div style ={{padding: "10px"}}>
-                            <p style = {{color: "white", fontSize: "18px"}}>Don't have an accout? <Link to = '/register' style = {{color: "white"}}>Sign up</Link></p>
-                            </div>
+                                <div class="input-div pass">
+                                <div class="i"> 
+                                        <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="div">
+                                        <h5>Password</h5>
+                                        <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" class="input2"/>
+                                </div>
+                                </div>
+                                <input type="submit" class="btn2" value="Login"/>
+                                <p>Don't have an account? <a href="#">Sign Up</a></p>
+                            </form>
                         </div>
                     </div>
-                </form>
             </div>
             )
         }
