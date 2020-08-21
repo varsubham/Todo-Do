@@ -90,6 +90,10 @@ class Login extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Username</h5>
+                                        <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
+                                            {errors.email}
+                                            {errors.emailnotfound}
+                                        </span>
                                         <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} className="input2"/>
                                 </div>
                                 </div>
@@ -99,6 +103,10 @@ class Login extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Password</h5>
+                                        <span style = {{color: 'red', textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
+                                            {errors.password}
+                                            {errors.passwordincorrect}
+                                        </span>
                                         <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" className="input2"/>
                                 </div>
                                 </div>
