@@ -71,7 +71,6 @@ class Login extends React.Component{
     }
     render(){
         const { errors } = this.state;
-        console.log(errors);
     return (
             <div>
                 <NavBar/>
