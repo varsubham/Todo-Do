@@ -1,7 +1,7 @@
 import axios from 'axios';
 const tasks_list;
 const tasks_get = (username, callback) => {
-    axios.get('http://localhost:5000/api/users/tasks/')
+    axios.get('/api/users/tasks/')
     .then(res => {
         //console.log(res.data[0].tasks)
         //console.log(res.data);

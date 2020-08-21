@@ -36,7 +36,7 @@ class MainPage extends React.Component{
     componentDidMount(){
         // console.log(this.props.location.state);
         // this.setState({uservalue: this.props.location.uservalue});
-        axios.get('http://localhost:5000/api/users/')
+        axios.get('/api/users/')
         .then(res => {
             const current_user = res.data.filter(val => {
                 if(val._id === this.props.auth.user.id)
@@ -54,7 +54,7 @@ class MainPage extends React.Component{
             // console.log(k);
             let tasks_list = [];
             const tasks_get = (username, callback) => {
-            axios.get('http://localhost:5000/api/users/tasks/')
+            axios.get('/api/users/tasks/')
             .then(res => {
                 //console.log(res.data[0].tasks)
                 //console.log(res.data);
@@ -154,7 +154,7 @@ class MainPage extends React.Component{
                 email: this.state.username,
                 tasks: this.state.tasks,
             }
-            axios.post(`http://localhost:5000/api/users/tasks/${this.state.userdetail_id}`, updated_task_details)
+            axios.post(`/api/users/tasks/${this.state.userdetail_id}`, updated_task_details)
             .then(res => {
                 console.log(res);
                 console.log(res.data);

@@ -38,7 +38,7 @@ class AddTask extends React.Component{
             //this.setState({subtask_input: this.state.subtask_input.pop()});
     }}
     componentDidMount(){
-        axios.get('http://localhost:5000/api/users/')
+        axios.get('/api/users/')
         .then(res => {
             //console.log(res.data);
             const current_user_arr = res.data.filter(val => {
@@ -46,7 +46,7 @@ class AddTask extends React.Component{
                     return val;
             });
             this.setState({username: current_user_arr[0].email}, () => {
-                axios.get('http://localhost:5000/api/users/tasks/')
+                axios.get('/api/users/tasks/')
                 .then(res => {
                     const current_user_task = res.data.filter(val => {
                         if(val.email === this.state.username){
@@ -96,7 +96,7 @@ class AddTask extends React.Component{
                 email: this.state.username,
                 tasks: temp_task,
             }
-            axios.post('http://localhost:5000/api/users/tasks/', userdetail)
+            axios.post('/api/users/tasks/', userdetail)
             .then(res => {
                 console.log(res.data);
                 window.location.reload(false);
@@ -123,7 +123,7 @@ class AddTask extends React.Component{
             const userdetail = {
                 tasks: temp_task,
             }
-            axios.post(`http://localhost:5000/api/users/tasks/update/${this.state.usertaskdetail._id}`, userdetail)
+            axios.post(`/api/users/tasks/update/${this.state.usertaskdetail._id}`, userdetail)
             .then(res => {
                 console.log(res.data);
                 window.location.reload(false);
