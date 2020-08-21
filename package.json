@@ -1,0 +1,16 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install-backend": "npm install --prefix backend",
+    "install-client": "npm install --prefix todo-frontend",
+    "build": "cd todo-frontend && npm run build",
+    "heroku-postbuild": "npm run install-client && npm run install-backend && npm run build",
+    "start": "node backend/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
