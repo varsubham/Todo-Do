@@ -87,6 +87,9 @@ class Register extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Name</h5>
+                                        <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
+                                            {errors.name}
+                                        </span>
                                         <input autoComplete="no" className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" className="input2"/>
                                 </div>
                                 </div>
@@ -96,6 +99,9 @@ class Register extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Email</h5>
+                                        <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
+                                            {errors.email}
+                                        </span>
                                         <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" className="input2"/>
                                 </div>
                                 </div>
@@ -105,6 +111,9 @@ class Register extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Password</h5>
+                                        <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '30px', left: '70px'}}>
+                                            {errors.password}
+                                        </span>
                                         <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" className="input2"/>
                                 </div>
                                 </div>
@@ -114,6 +123,9 @@ class Register extends React.Component{
                                 </div>
                                 <div className="div">
                                         <h5>Confirm Password</h5>
+                                        <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '30px', left: '70px'}}>
+                                            {errors.password2}
+                                        </span>
                                         <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" className="input2"/>
                                 </div>
                                 </div>
