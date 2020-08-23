@@ -34,7 +34,7 @@ class Login extends React.Component{
             }
             function remcl(){
                 let parent = this.parentNode.parentNode;
-                if(this.value == ""){
+                if(this.value === ""){
                     parent.classList.remove("focus");
                 }
             }
@@ -72,14 +72,14 @@ class Login extends React.Component{
     return (
             <div>
                 <NavBar/>
-                <img className="wave" src={wave}/>
+                <img className="wave" src={wave} alt = ""/>
                     <div className="container2">
                         <div className="img2">
-                            <img src={bg3}/>
+                            <img src={bg3} alt = ""/>
                         </div>
                         <div className="login-content">
                             <form onSubmit = {this.onSubmit}>
-                                <img src={avatar1}/>
+                                <img src={avatar1} alt = ""/>
                                 <h2 className="title">Login</h2>
                                 <div className="input-div one">
                                 <div className="i">
@@ -91,7 +91,7 @@ class Login extends React.Component{
                                             {errors.email}
                                             {errors.emailnotfound}
                                         </span>
-                                        <input className={classnames("", {invalid: errors.email || errors.emailnotfound})} error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} className="input2"/>
+                                        <input  error = {errors.email} type="text" name = "username" onChange = {this.onChangeListner} id="email" value = {this.state.username} className="input2"/>
                                 </div>
                                 </div>
                                 <div className="input-div pass">
@@ -104,7 +104,7 @@ class Login extends React.Component{
                                             {errors.password}
                                             {errors.passwordincorrect}
                                         </span>
-                                        <input className={classnames("", {invalid: errors.password || errors.passwordincorrect})} error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" className="input2"/>
+                                        <input  error = {errors.password} name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password" type="password" className="input2"/>
                                 </div>
                                 </div>
                                 <input type="submit" className="btn2" value="Login"/>
