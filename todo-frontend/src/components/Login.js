@@ -4,7 +4,6 @@ import NavBar from './NavBar';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";
-import classnames from "classnames";
 import './login.css';
 const avatar1 = require('./img/avatar1.svg');
 const bg3 = require('./img/bg3.svg');
