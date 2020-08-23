@@ -2,35 +2,38 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import NavBar from './NavBar';
 import store from '../store'
-const logo = require('../images/logo4.svg');
-
+const wave = require('./img/wave.svg');
+const landing_logo2 = require('../images/landing_logo2.svg');
+const arrow = require('../images/arrow.svg');
 class Landing extends React.Component{
-    
-    constructor(){
-        super();
-        this.state = {
-        }
-    }
-    
+
     render(){
         if(store.getState().auth.isAuthenticated)
             return <Redirect to ='/main'/>
-    return (
-        <div>
-            <NavBar/>
-                <div className = "container">
-                    <div className = "container-flex">
-                        <img width = "400" src = {logo} alt = ""/>
-                        <div className = "landing-description">
-                            <h1>Let 2-do handle you Tasks</h1>
-                            <Link to = '/register'>
-                                <button className="button-main" ><span>Register</span></button>
-                            </Link>
+        return (
+            <div>
+                <NavBar/>
+                <img className="wave2" src={wave}/>
+                    <div className = "container">
+                        <div className = "container-flex">
+                            <div className = "landing-description">
+                                <h1>Organize your tasks with this App.</h1>
+                                <ul className = "landing_sub_detail">
+                                    <li>Add Tasks along with checklist</li>
+                                    <li>Drag your tasks around the dashboard</li>
+                                    <li>Check it when task is completed</li>
+                                    <li style = {{marginBottom: '16px'}}>Delete it</li>
+                                    <li style = {{fontWeight: "bold"}}>Try Yourself <img width = "24px" src ={arrow}/></li>
+                                </ul>
+                                <div className = "landing_btn">
+                                    <Link to = '/register'>Get Started</Link>
+                                </div>
+                            </div>
+                            <img className = "landing_logo" width = "700" src = {landing_logo2} alt = ""/>
                         </div>
                     </div>
-                </div>
-        </div>
-    )
-}
+            </div>
+        )
+    }
 }
 export default Landing;

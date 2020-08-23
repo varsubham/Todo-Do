@@ -5,16 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed; */
-  /* overflow: hidden; */
 }
-html{
-  /* background-size: cover;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover; */
-  /* background: linear-gradient(to top, #fdfbfb 0%, #ebedee 100%) no-repeat center center fixed; */
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -26,145 +18,80 @@ code {
 .container{
   max-width: 1300px;
 }
+.wave2{
+	position: fixed;
+	bottom: -20px;
+	left: -30px;
+	height: 100%;
+	z-index: -1;
+}
 .container-flex{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin: 40px;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 80px 20px;
 }
 .landing-description{
-  text-align: center;
-  
+  text-align: left;
+  margin-bottom: 24px;
 }
 
 .landing-description h1{
   margin-bottom: 20px;
-  font-size: 70px;
-  letter-spacing: 1px;
+  font-size: 42px;
   font-weight: bold;
+}
+
+.landing_sub_detail{
+  list-style-type: none;
+  padding: 32px;
+}
+
+@media only screen and (max-width: 1169px){
+  .wave2{
+    display: none;
+  }
+}
+@media only screen and (max-width: 1065px){
+  .container-flex .landing_logo{
+    width: 500px;
+  }
+  .landing-description h1{
+    font-size: 24px;
+  }
+  .container-flex{
+    padding: 80px 60px;
+  }
+}
+@media only screen and (max-width: 544px){
+  .landing_logo{
+    display: none;
+  }
 }
 /* Button main */
-
-.button-main {
-  display: inline-block;
-  border-radius: 7px;
-  background-image: linear-gradient(#7EE3E3, #217A7A);
-  border: none;
-  color: #FFFFFF;
-  text-align: center;
-  font-size: 40px;
-  font-weight: bold;
-  width: 250px;
-  transition: all 0.5s;
-  cursor: pointer;
-  padding: 10px 20px;
-  margin: 5px;
+.landing_btn a {
+  text-decoration: none;
+  background-color: #08ff1a;
+  color: white;
+  font-weight: 450;
+  border-radius: 4px;
+  padding: 12px 16px;
+  font-size: 24px;
+}
+.landing_btn{
+  padding-left: 32px;
 }
 
-.button-main span {
-  cursor: pointer;
-  letter-spacing: 1px;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.button-main span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-}
-
-.button-main:hover span {
-  padding-right: 25px;
-}
-
-.button-main:hover span:after {
-  opacity: 1;
-  right: 0;
-}
 @media only screen and (max-width: 990px) {
   .container-flex {
     display: block;
     text-align: center;
+    padding: 80px 20px;
   }
-}
-@media only screen and (max-width: 500px) {
-  .container-flex img{
-    width: auto;
+  .container-flex .landing-description{
+    text-align: center;
   }
-}
-
-/* Register Form */
-
-.contact{
-  text-align: center;
-  
-  margin: 24px;
-}
-.contact .details{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.contact .details .red-bg{
-  background-image: linear-gradient(#7EE3E3, #217A7A);
-  /* background-image: linear-gradient(120deg, #6aa3ff 0%, #c2e9fb 100%); */
-  width: 450px;
-  border-radius: 7px;
-  margin: auto;
-  height: 90%;
-}
-@media only screen and (max-width: 378px){
-  .contact .details .red-bg{
-    max-width: 400px;
+  .landing_btn{
+    padding-left: 0;
   }
-  .contact .details .red-bg .form{
-    padding: 3em 1em;
-  }
-}
-
-.contact .details .red-bg .form{
-  padding: 3em 6.25em;
-}
-.contact .details .red-bg .form .inputbox{
-  padding-bottom: 2em;
-  
-}
-.contact .details .red-bg .form input{
-  width: 100%;
-  outline: none;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  border-bottom: 2px solid white;
-  font-size: 20px;
-  padding: 10px 0;
-  color: white;
-  
-
-}
-.contact .details .red-bg .form textarea{
-  width: 100%;
-  outline: none;
-  border: none;
-  box-shadow: none;
-  background: transparent;
-  border-bottom: 2px solid white;
-  font-size: 20px;
-  min-height: 150px;
-  color: white;
-}
-::placeholder{
-  color: white;
-  opacity: 1;
-}
-.contact .details .red-bg .form button{
-  padding: 0.3em 1.5em;
-  font-size: 1.2em;
-  font-weight: 300;
-  cursor: pointer;
 }
