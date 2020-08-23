@@ -26,7 +26,6 @@ class AddTask extends React.Component{
             temp.push('');
             return temp;
         })()}));
-        //this.setState({subtask_input: this.state.subtask_input.push('')});
     }
     decrement(){
         if(this.state.subtask_count >= 2){
@@ -35,12 +34,10 @@ class AddTask extends React.Component{
                 temp.pop();
                 return temp;
             })()}) );
-            //this.setState({subtask_input: this.state.subtask_input.pop()});
     }}
     componentDidMount(){
         axios.get('/api/users/')
         .then(res => {
-            //console.log(res.data);
             const current_user_arr = res.data.filter(val => {
                 if(val._id === store.getState().auth.user.id)
                     return val;
@@ -91,7 +88,6 @@ class AddTask extends React.Component{
                     },
                 }
             ]
-            //console.log(sub_task_temp);
             const userdetail = {
                 email: this.state.username,
                 tasks: temp_task,
@@ -131,11 +127,6 @@ class AddTask extends React.Component{
         }
     }
     render(){
-        //console.log(this.props.auth.user);
-        //console.log(store.getState().auth.user);
-        //console.log(this.state.usertaskfound);
-        // console.log(this.state.subtask_input);
-        // console.log(this.state.main_title);
         let temp_arr = [];
         let subtaskinput = () => {
             for(let i = 1; i <= this.state.subtask_count; i++){
