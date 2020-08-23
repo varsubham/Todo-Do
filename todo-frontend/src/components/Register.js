@@ -42,13 +42,13 @@ class Register extends React.Component{
             input.addEventListener("blur", remcl);
         });
     }
-    componentDidUpdate(prevProps, prevState) {
-        if (this.props.errors!==prevState.errors) {
-            this.setState({
-                errors: prevProps.errors
-            });
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.errors) {
+          this.setState({
+            errors: nextProps.errors
+          });
         }
-    }
+      }
 
     onChangeListner(event){
         this.setState({[event.target.name]: event.target.value});

@@ -43,16 +43,16 @@ class Login extends React.Component{
             });
 
       }
-    componentDidUpdate(prevProps, prevState) {
-        if (prevProps.auth.isAuthenticated) {
-          this.props.history.push("/main"); // push user to dashboard when they login
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.auth.isAuthenticated) {
+            this.props.history.push("/main"); // push user to dashboard when they login
         }
-        if (this.props.errors!==prevState.errors) {
+        if (nextProps.errors) {
             this.setState({
-                errors: prevProps.errors
+            errors: nextProps.errors
             });
         }
-      }
+    }
 
 
     onChangeListner(event){
