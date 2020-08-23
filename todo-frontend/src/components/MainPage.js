@@ -85,7 +85,7 @@ class MainPage extends React.Component{
         }
         axios.post(`/api/users/tasks/${this.state.userdetail_id}`, updated_task_details)
         .then(res => {
-            console.log(res);
+            //console.log(res);
             console.log(res.data);
         });
     }
@@ -112,7 +112,7 @@ class MainPage extends React.Component{
                 return true;
         });
         if(window.confirm('Do you Really Want to delete your Task ?'))
-            this.setState({tasks: updated_task}, () => console.log(this.state.tasks));
+            this.setState({tasks: updated_task});
     }
 
     render(){
