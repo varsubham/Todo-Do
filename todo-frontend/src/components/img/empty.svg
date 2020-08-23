@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="353.966" height="347.466" viewBox="0 0 353.966 347.466">
+  <g id="empty" transform="translate(-375 -203)">
+    <rect id="Rectangle_1" data-name="Rectangle 1" width="292" height="302" rx="41" transform="translate(375 230)" fill="#cead90"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="241" height="268" transform="translate(401 242)" fill="#fff"/>
+    <path id="Rectangle_2" data-name="Rectangle 2" d="M15,0h97a15,15,0,0,1,15,15V33a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V15A15,15,0,0,1,15,0Z" transform="translate(458 219)" fill="#c1c0bd"/>
+    <g id="Ellipse_1" data-name="Ellipse 1" transform="translate(505 203)" fill="#fff" stroke="#c1c0bd" stroke-width="8">
+      <circle cx="16.5" cy="16.5" r="16.5" stroke="none"/>
+      <circle cx="16.5" cy="16.5" r="12.5" fill="none"/>
+    </g>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="127" height="12" transform="translate(458 240)" fill="#9b9a97"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="241" height="5" transform="translate(401 510)" fill="#dfdedb"/>
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(483 293)" fill="#fff" stroke="#707070" stroke-width="16">
+      <circle cx="73" cy="73" r="73" stroke="none"/>
+      <circle cx="73" cy="73" r="65" fill="none"/>
+    </g>
+    <path id="Path_2" data-name="Path 2" d="M517.784,364.168s-20.911,5.764-26.675,32.707" transform="matrix(0.799, 0.602, -0.602, 0.799, 372.581, -281.96)" fill="none" stroke="#707070" stroke-linecap="round" stroke-width="8"/>
+    <g id="Rectangle_6" data-name="Rectangle 6" transform="translate(603.346 410.597) rotate(45)" fill="#707070" stroke="#707070" stroke-width="1">
+      <rect width="122" height="19" stroke="none"/>
+      <rect x="0.5" y="0.5" width="121" height="18" fill="none"/>
+    </g>
+    <g id="Rectangle_7" data-name="Rectangle 7" transform="translate(728.966 525.718) rotate(135)" fill="#707070" stroke="#707070" stroke-width="1">
+      <rect width="35" height="110" rx="15" stroke="none"/>
+      <rect x="0.5" y="0.5" width="34" height="109" rx="14.5" fill="none"/>
+    </g>
+  </g>
+</svg>
