@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import axios from 'axios';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
 import classnames from "classnames";
 import NavBar from './NavBar';
-const avatar1 = require('./img/avatar1.svg');
 const bg3 = require('./img/bg3.svg');
 const wave = require('./img/wave.svg');
 class Register extends React.Component{
@@ -27,21 +25,23 @@ class Register extends React.Component{
         if(this.props.auth.isAuthenticated){
             this.props.history.push('/main');
         }
-            const inputs = document.querySelectorAll(".input2");
-            function addcl(){
-                let parent = this.parentNode.parentNode;
-                parent.classList.add("focus");
+        
+        //for animation when input box clicked
+        const inputs = document.querySelectorAll(".input2");
+        function addcl(){
+            let parent = this.parentNode.parentNode;
+            parent.classList.add("focus");
+        }
+        function remcl(){
+            let parent = this.parentNode.parentNode;
+            if(this.value == ""){
+                parent.classList.remove("focus");
             }
-            function remcl(){
-                let parent = this.parentNode.parentNode;
-                if(this.value == ""){
-                    parent.classList.remove("focus");
-                }
-            }
-            inputs.forEach(input => {
-                input.addEventListener("focus", addcl);
-                input.addEventListener("blur", remcl);
-            });
+        }
+        inputs.forEach(input => {
+            input.addEventListener("focus", addcl);
+            input.addEventListener("blur", remcl);
+        });
     }
     componentWillReceiveProps(nextProps) {
         if (nextProps.errors) {
@@ -49,11 +49,12 @@ class Register extends React.Component{
             errors: nextProps.errors
           });
         }
-      }
+    }
+
     onChangeListner(event){
         this.setState({[event.target.name]: event.target.value});
-        //console.log(this.state);
     }
+
     onSumbit(event){
         event.preventDefault();
         const new_register = {
@@ -63,10 +64,9 @@ class Register extends React.Component{
             password2: this.state.password2,
             
         }
-        // axios.post(`http://localhost:5000/api/users/register`, new_register)
-        // .then(res => console.log(res.data))
         this.props.registerUser(new_register, this.props.history); 
     }
+
     render(){
         const { errors } = this.state;
         return (
@@ -79,7 +79,6 @@ class Register extends React.Component{
                         </div>
                         <div className="login-content">
                             <form onSubmit = {this.onSumbit}>
-                                {/* <img src={avatar1}/> */}
                                 <h2 className="title">Register</h2>
                                 <div className="input-div one">
                                 <div className="i">
