@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 import NavBar from './NavBar';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -27,6 +26,7 @@ class Login extends React.Component{
         if (this.props.auth.isAuthenticated) {
           this.props.history.push("/main");
         }
+        //for animation when user clicks on input field
         const inputs = document.querySelectorAll(".input2");
             function addcl(){
                 let parent = this.parentNode.parentNode;
@@ -48,24 +48,22 @@ class Login extends React.Component{
         if (nextProps.auth.isAuthenticated) {
           this.props.history.push("/main"); // push user to dashboard when they login
         }
-    if (nextProps.errors) {
-          this.setState({
-            errors: nextProps.errors
-          });
+        if (nextProps.errors) {
+            this.setState({
+                errors: nextProps.errors
+            });
         }
       }
 
 
     onChangeListner(event){
         this.setState({[event.target.name]: event.target.value});
-        //console.log(this.state);
     }
     onSubmit(event){
         event.preventDefault();
         const new_login = {
             email: this.state.username,
             password: this.state.password,
-            
         }
         this.props.loginUser(new_login);
     }
