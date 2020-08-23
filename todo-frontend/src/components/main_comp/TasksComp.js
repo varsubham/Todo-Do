@@ -4,16 +4,17 @@ import SubTaskComp from './SubTaskComp';
 const dragElement = require('./draggable.js');
 class TasksComp extends React.Component{
     componentDidMount(){
+        //this will drag our component
         dragElement(document.getElementById(this.props.task._id));
   }
     
     render(){
-        //console.log(this.props);
         const sub_tasks_comp = this.props.task.subtasks.map(value => {
-            // console.log(value.id);
             return <SubTaskComp key = {value.id} subtask = {value} checkboxClicked = {this.props.checkboxClicked} task_id = {this.props.task._id}/>
         })
+
         let progress_percent = `${this.props.progress_percent}%`;
+
         return (
             <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, padding: "0",border: 'none', backgroundColor: '#73C2FB', width: '300px', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
                 <div className = "main-task">
@@ -44,7 +45,5 @@ class TasksComp extends React.Component{
         )
     }
 }
-
-
 
 export default TasksComp;
