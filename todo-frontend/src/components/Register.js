@@ -3,7 +3,6 @@ import { Link, withRouter } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
-import classnames from "classnames";
 import NavBar from './NavBar';
 const bg3 = require('./img/bg3.svg');
 const wave = require('./img/wave.svg');
@@ -34,7 +33,7 @@ class Register extends React.Component{
         }
         function remcl(){
             let parent = this.parentNode.parentNode;
-            if(this.value == ""){
+            if(this.value === ""){
                 parent.classList.remove("focus");
             }
         }
@@ -72,10 +71,10 @@ class Register extends React.Component{
         return (
             <div>
                 <NavBar/>
-                    <img className="wave" src={wave}/>
+                    <img className="wave" src={wave} alt=""/>
                     <div className="container2">
                         <div className="img2">
-                            <img src={bg3}/>
+                            <img src={bg3} alt=""/>
                         </div>
                         <div className="login-content">
                             <form onSubmit = {this.onSumbit}>
@@ -89,7 +88,7 @@ class Register extends React.Component{
                                         <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
                                             {errors.name}
                                         </span>
-                                        <input autoComplete="no" className={classnames("", {invalid: errors.name})} error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" className="input2"/>
+                                        <input autoComplete="no" error = {errors.name} type="text" name = "name" value = {this.state.name} onChange = {this.onChangeListner} id="name" className="input2"/>
                                 </div>
                                 </div>
                                 <div className="input-div one">
@@ -101,7 +100,7 @@ class Register extends React.Component{
                                         <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '20px', left: '50px'}}>
                                             {errors.email}
                                         </span>
-                                        <input className={classnames("", {invalid: errors.email})} error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" className="input2"/>
+                                        <input error = {errors.email} type="text" name = "username" value = {this.state.username} onChange = {this.onChangeListner} id="email" className="input2"/>
                                 </div>
                                 </div>
                                 <div className="input-div pass">
@@ -113,7 +112,7 @@ class Register extends React.Component{
                                         <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '30px', left: '70px'}}>
                                             {errors.password}
                                         </span>
-                                        <input className={classnames("", {invalid: errors.password})} error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" className="input2"/>
+                                        <input error = {errors.password} type="password" name = "password" value = {this.state.password} onChange = {this.onChangeListner} id="password1" className="input2"/>
                                 </div>
                                 </div>
                                 <div className="input-div pass">
@@ -125,7 +124,7 @@ class Register extends React.Component{
                                         <span style = {{color: 'red',textAlign: 'left', position: 'relative', bottom: '30px', left: '70px'}}>
                                             {errors.password2}
                                         </span>
-                                        <input className={classnames("", {invalid: errors.password2})} error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" className="input2"/>
+                                        <input error = {errors.password2} type="password" name = "password2" value = {this.state.password2} onChange = {this.onChangeListner} id="password2" className="input2"/>
                                 </div>
                                 </div>
                                 <input type="submit" className="btn2" value="Register"/>
