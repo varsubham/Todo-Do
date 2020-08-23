@@ -2,7 +2,6 @@ import React from 'react';
 
 class SubTaskComp extends React.Component{
     render(){
-        //console.log(this.props.subtask);
         return (
             <div className="checkbox" style = {{border: "none" , boxShadow: "0 4px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)", backgroundColor: 'white', borderRadius: "4px", padding: "8px", margin: "8px 0px"}}>
                 <label style = {{display: 'flex',}}>
@@ -13,7 +12,5 @@ class SubTaskComp extends React.Component{
         )
     }
 }
-
-
 
 export default SubTaskComp;

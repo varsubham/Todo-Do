@@ -1,4 +1,4 @@
-//dragElement(document.getElementById("task-border"));
+//this script is used for dragging the component around
 
 
 module.exports = function dragElement(elmnt) {

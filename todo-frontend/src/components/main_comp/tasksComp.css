@@ -6,11 +6,7 @@
     width: fit-content;
     margin: auto;
     position: absolute;
-    /* cursor: move; */
 }
-/* .main-task{
-    cursor: move;
-} */
 .divider{
     margin: 12px 0px;
     border-bottom: 1px solid black;

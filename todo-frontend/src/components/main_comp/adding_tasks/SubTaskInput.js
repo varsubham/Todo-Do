@@ -10,8 +10,4 @@ class SubTaskInput extends React.Component{
     }
 }
 
-
-
-
-
 export default SubTaskInput;

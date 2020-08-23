@@ -12,12 +12,9 @@ class EmptyComp extends React.Component{
                     <h6>Click below to add tasks</h6>
                     <button>Add Tasks</button>
                 </div>
-                
             </div>
         )
     }
 }
-
-
 
 export default EmptyComp;
