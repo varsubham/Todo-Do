@@ -18,7 +18,7 @@ class Landing extends React.Component{
                         <div className = "container-flex">
                             <div className = "landing-description">
                                 <h1>Organize your tasks with this App.</h1>
-                                <ul className = "landing_sub_detail">
+                                <ul style = {{textAlign: "left"}} className = "landing_sub_detail">
                                     <li>Add Tasks along with checklist</li>
                                     <li>Drag your tasks around the dashboard</li>
                                     <li>Check it when task is completed</li>
