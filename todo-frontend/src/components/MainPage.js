@@ -93,16 +93,17 @@ class MainPage extends React.Component{
     onchangePosition(comp_id){
         const k_left = document.getElementById(comp_id).offsetLeft;
         const k_top = document.getElementById(comp_id).offsetTop;
-        //setTimeout is used because onClick of checkbox also runs onChangePosition method
-        //and setState takes some time to update state
-        setTimeout(() => {
-            let copy_state = _.cloneDeep(this.state.tasks);
+        // Check if the position has changed then only update database
+        let copy_state = _.cloneDeep(this.state.tasks);
         for(let i of copy_state){
-            if(i._id === comp_id)
-                i.position = {offSetLeft: k_left, offSetTop: k_top};
+            if(i._id === comp_id){
+                if(i.position.offSetTop !== k_top || i.position.offSetLeft !== k_left){
+                    i.position = {offSetLeft: k_left, offSetTop: k_top};
+                    this.setState({tasks: copy_state}, this.update_db);
+                    break;
+                }
+            }
         }
-        this.setState({tasks: copy_state}, this.update_db);
-        }, 300)
     }
     ondelete(id){
         const updated_task = this.state.tasks.filter(val => {
@@ -112,7 +113,7 @@ class MainPage extends React.Component{
                 return true;
         });
         if(window.confirm('Do you Really Want to delete your Task ?'))
-            this.setState({tasks: updated_task});
+            this.setState({tasks: updated_task}, this.update_db);
     }
 
     render(){

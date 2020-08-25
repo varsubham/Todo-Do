@@ -16,11 +16,11 @@ class TasksComp extends React.Component{
         let progress_percent = `${this.props.progress_percent}%`;
 
         return (
-            <div id = {this.props.task._id} className = "task-border" onMouseUp = {() => this.props.changePosition(this.props.task._id)} style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, padding: "0",border: 'none', backgroundColor: '#73C2FB', width: '300px', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
+            <div id = {this.props.task._id} className = "task-border" style = {{left: `${this.props.position.offSetLeft}px`, top: `${this.props.position.offSetTop}px`, padding: "0",border: 'none', backgroundColor: '#73C2FB', width: '300px', boxShadow: "0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)"}}>
                 <div className = "main-task">
                     <div style = {{backgroundColor: '#4CAFF7', boxShadow: "0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)" , borderRadius: '6px 6px 0 0', padding: '12px 12px 12px 12px', color: 'white', marginBottom: '18px'}}>
                         <div style = {{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}>
-                            <div>
+                            <div onMouseUp = {() => this.props.changePosition(this.props.task._id)}>
                                 <i id = {this.props.task._id+'header'} className="fa fa-arrows" style = {{fontSize: '30px', cursor: 'move'}}></i>
                             </div>
                             <div><i onClick = {() => this.props.ondelete(this.props.task._id)} className="fa fa-trash-o" style={{fontSize: '36px', cursor: 'pointer', visibility: this.props.progress_percent === 100 ? 'visible' : 'hidden'}}></i></div>
