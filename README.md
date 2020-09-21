@@ -15,7 +15,7 @@ npm run install-backend
 npm run install-client
 ```
 
-2. Add a keys.js file at /backend/config/ with the following:
+2. Update keys.js file at /backend/config/ with your details:
 
 ```
 module.exports = {
