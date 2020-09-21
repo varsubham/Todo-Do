@@ -5,16 +5,16 @@ Simple Full Stack Todo-Do App created using MERN stack
 
 1. Install dependencies
 
-In the root folder run the following code
+    In the root folder run the following code
 
-# Installing back-end
+    Installing back-end
 ```
-npm run install-backend ..
+npm run install-backend
 ```
 
-# Installing front-end
+    Installing front-end
 ```
-npm run install-client ..
+npm run install-client
 ```
 2. Add a keys.js file at /backend/config/ with the following:
 
