@@ -6,6 +6,8 @@
   "scripts": {
     "install-backend": "npm install --prefix backend",
     "install-client": "npm install --prefix todo-frontend",
+    "backend-dev": "cd ./backend && nodemon server.js",
+    "frontend-dev": "cd ./todo-frontend && npm start",
     "build": "cd todo-frontend && npm run build",
     "heroku-postbuild": "npm run install-client && npm run install-backend && npm run build",
     "start": "node backend/server.js"
