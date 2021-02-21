@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../actions/authActions";
 import NavBar from './NavBar';
-const bg3 = require('./img/bg3.svg');
-const wave = require('./img/wave.svg');
+import bg3 from './img/bg3.svg';
+import wave from './img/wave.svg';
 class Register extends React.Component{
     constructor(){
         super();

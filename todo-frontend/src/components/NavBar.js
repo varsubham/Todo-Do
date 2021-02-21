@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-const logo = require('../images/logo3.svg');
+import logo from '../images/logo3.svg';
 function NavBar(){
     return (
         <div>

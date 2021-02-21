@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import AddTask from './main_comp/adding_tasks/AddTask';
-const logo = require('../images/logo3.svg');
+import logo from '../images/logo3.svg';
 class NavBar extends React.Component{
     constructor(){
         super();

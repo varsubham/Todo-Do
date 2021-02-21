@@ -2,9 +2,10 @@ import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import NavBar from './NavBar';
 import store from '../store'
-const wave = require('./img/wave.svg');
-const landing_logo2 = require('../images/landing_logo2.svg');
-const arrow = require('../images/arrow.svg');
+import wave from './img/wave.svg'
+import landing_logo2 from "../images/landing_logo2.svg";
+import arrow from "../images/arrow.svg";
+
 class Landing extends React.Component{
 
     render(){

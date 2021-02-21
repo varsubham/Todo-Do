@@ -1,7 +1,6 @@
 import React from 'react';
 import './emptyComp.css';
-const logo = require('../../images/logo3.svg');
-const empty = require('../img/empty.svg');
+import empty from '../img/empty.svg';
 class EmptyComp extends React.Component{
     render(){
         return (

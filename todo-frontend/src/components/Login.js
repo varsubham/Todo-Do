@@ -5,9 +5,9 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../actions/authActions";
 import './login.css';
-const avatar1 = require('./img/avatar1.svg');
-const bg3 = require('./img/bg3.svg');
-const wave = require('./img/wave.svg');
+import avatar1  from './img/avatar1.svg';
+import bg3  from './img/bg3.svg';
+import wave  from'./img/wave.svg';
 class Login extends React.Component{
     constructor(props){
         super(props);
