@@ -1,5 +1,5 @@
-# Todo-Do
-Simple Full Stack Todo-Do App created using MERN stack
+# Todo-App
+Simple Full Stack Todo-App App created using MERN stack
 
 ## Installing
 
